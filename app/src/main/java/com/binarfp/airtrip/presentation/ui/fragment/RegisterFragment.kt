@@ -1,4 +1,4 @@
-package com.binarfp.presentation.ui.fragment
+package com.binarfp.airtrip.presentation.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
