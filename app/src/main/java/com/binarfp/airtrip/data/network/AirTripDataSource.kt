@@ -9,8 +9,9 @@ class AirTripDataSource(private val api : AirTripAPIService) {
         phone : Int,
         email : String,
         address : String,
-        password : String
+        password : String,
+        role_id : Int
     ) : User {
-        return api.register(name,image,phone,address,email,password)
+        return api.register(name,image,phone,address,email,password,role_id)
     }
 }
