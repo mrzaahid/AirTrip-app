@@ -3,15 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/drawable/border.xml" value="0.2115" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/drawable/ic_account.xml" value="0.2375" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/drawable/ic_person.xml" value="0.2375" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_main.xml" value="0.2223731884057971" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_home.xml" value="0.2572463768115942" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_login.xml" value="0.152" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_register.xml" value="0.128" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_splash.xml" value="0.2223731884057971" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/item_search.xml" value="0.2572463768115942" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_register.xml" value="0.22" />
       </map>
     </option>
   </component>
