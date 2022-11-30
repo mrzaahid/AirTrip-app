@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/drawable/border.xml" value="0.2115" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_main.xml" value="0.2223731884057971" />
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_register.xml" value="0.136" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_splash.xml" value="0.2223731884057971" />
       </map>
     </option>
