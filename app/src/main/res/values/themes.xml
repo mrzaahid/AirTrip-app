@@ -27,4 +27,10 @@
         <item name="backgroundTint">@color/blue_base</item>
         <item name="android:padding">11sp</item>
     </style>
+
+    <style name="bigButton">
+        <item name="android:backgroundTint">@color/blue_base</item>
+        <item name="android:padding">11sp</item>
+        <item name="android:layout_width">237dp</item>
+    </style>
 </resources>

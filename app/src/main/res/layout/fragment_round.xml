@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    tools:context=".presentation.ui.buyer.RoundFragment">
+
+    <ImageView
+        android:id="@+id/iv_wp"
+        android:layout_width="match_parent"
+        android:layout_height="284dp"
+        android:src="@drawable/nature_wp" />
+
+    <TextView
+        android:id="@+id/tv_discover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/discover_beautiful"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_discover"
+        android:text="@string/place_with_us"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:fontFamily="sans-serif-condensed"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="170sp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/border_black"
+            app:cardCornerRadius="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="106dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/logo"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_round"
+                    app:layout_constraintStart_toEndOf="@+id/btn_oneway"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_booking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/booking"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
+
+                <Button
+                    android:id="@+id/btn_oneway"
+                    style="@style/standarButton"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/one_way"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_booking" />
+
+                <Button
+                    android:id="@+id/btn_round"
+                    style="@style/standarButton"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:text="@string/round"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_booking" />
+
+                <EditText
+                    android:id="@+id/et_from"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/border2"
+                    android:drawableStart="@drawable/ic_takeoff"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/from"
+                    android:padding="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_round"
+                    app:layout_constraintStart_toStartOf="@+id/btn_oneway"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_oneway" />
+
+                <EditText
+                    android:id="@+id/et_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/border2"
+                    android:drawableStart="@drawable/ic_arrived"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/to"
+                    android:padding="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_from"
+                    app:layout_constraintStart_toStartOf="@+id/et_from"
+                    app:layout_constraintTop_toBottomOf="@+id/et_from" />
+
+                <EditText
+                    android:id="@+id/et_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="170dp"
+                    android:background="@drawable/border_black"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/departure"
+                    android:padding="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_to"
+                    app:layout_constraintStart_toStartOf="@+id/et_to"
+                    app:layout_constraintTop_toBottomOf="@+id/et_to" />
+
+                <EditText
+                    android:id="@+id/et_return"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/border_black"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawablePadding="16dp"
+                    android:padding="15dp"
+                    android:text="@string/returnn"
+                    app:layout_constraintEnd_toEndOf="@+id/et_to"
+                    app:layout_constraintStart_toStartOf="@+id/et_to"
+                    app:layout_constraintTop_toBottomOf="@+id/et_to" />
+
+                <EditText
+                    android:id="@+id/et_traveler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="170dp"
+                    android:background="@drawable/border_black"
+                    android:drawableStart="@drawable/ic_seat"
+                    android:drawablePadding="16dp"
+                    android:hint="@string/seat_class"
+                    android:padding="15dp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_date"
+                    app:layout_constraintStart_toStartOf="@+id/et_date"
+                    app:layout_constraintTop_toBottomOf="@+id/et_date" />
+
+                <Button
+                    android:id="@+id/btn_search"
+                    style="@style/bigButton"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_traveler" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+
+
+</RelativeLayout>
