@@ -37,7 +37,6 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
         viewModelScope.launch {
             val data = localRepository.login(requestBody)
             _loginResult.postValue(data)
-            Log.e("email",data.body()!!.accessToken)
             Log.e("code",data.code().toString())
         }
     }
