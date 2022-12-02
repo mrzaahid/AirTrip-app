@@ -1,19 +1,24 @@
 package com.binarfp.airtrip.data.network
 
+import com.binarfp.airtrip.model.ResponseLogin
 import com.binarfp.airtrip.model.ResponseRegist
 import com.binarfp.airtrip.model.User
+import okhttp3.RequestBody
+import retrofit2.Response
+import retrofit2.http.Body
 
 class AirTripDataSource(private val api : AirTripAPIService) {
     suspend fun register(
-        name : String,
-        image : String,
-        phone : Int,
-        email : String,
-        address : String,
-        password : String,
-        role_id : Int
-    ) : ResponseRegist {
-        return api.register(name,image,phone,address,email,password,role_id)
+        requestBody: RequestBody
+//    ): ResponseRegist
+    ): Response<ResponseRegist>{
+        return api.register(requestBody)
+    }
+    suspend fun login(
+        requestBody: RequestBody
+//    ): ResponseRegist
+    ):Response<ResponseLogin>{
+        return api.login(requestBody)
     }
 
 }

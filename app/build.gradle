@@ -32,6 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures{
+        viewBinding = true
+    }
+    def baseurl = "https://airtripcom-c12-be-production.up.railway.app/"
+    flavorDimensions 'default'
+    productFlavors {
+        production {
+            dimension = 'default'
+            applicationIdSuffix".Product"
+            buildConfigField("String", "BASE_URL", "\"${baseurl}\"")
+        }
+    }
 }
 
 dependencies {
