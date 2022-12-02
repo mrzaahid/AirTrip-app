@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.binarfp.airtrip.presentation.ui.buyer.LoginFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.auth.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -31,12 +31,9 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.binarfp.airtrip.presentation.ui.buyer.RegisterFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.auth.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_registerFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />

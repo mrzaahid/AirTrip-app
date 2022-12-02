@@ -1,7 +1,8 @@
-package com.binarfp.airtrip
+package com.binarfp.airtrip.presentation.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.binarfp.airtrip.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
