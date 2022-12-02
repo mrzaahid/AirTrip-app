@@ -1,6 +1,7 @@
 package com.binarfp.airtrip.di
 
 import com.binarfp.airtrip.data.LocalRepository
+import com.binarfp.airtrip.data.local.preference.DataStoreDataSource
 import com.binarfp.airtrip.data.network.AirTripDataSource
 import dagger.Module
 import dagger.Provides
@@ -14,8 +15,9 @@ object ViewModelModule {
     @ViewModelScoped
     @Provides
     fun provideRepository(
-        airTripDataSource: AirTripDataSource
+        airTripDataSource: AirTripDataSource,
+        dataStoreDataSource: DataStoreDataSource
     ): LocalRepository {
-        return LocalRepository(airTripDataSource)
+        return LocalRepository(airTripDataSource,dataStoreDataSource)
     }
 }

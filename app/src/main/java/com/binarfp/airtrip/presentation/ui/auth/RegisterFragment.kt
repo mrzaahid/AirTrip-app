@@ -38,11 +38,11 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btnSignup.setOnClickListener {
-            if (checkForm()){ tryregister() }
+            if (checkForm()){ tryRegister() }
         }
     }
 
-    fun checkForm():Boolean{
+    private fun checkForm():Boolean{
         var a = true
         if (Utils.isempty(binding.etUsername)){
             Toast.makeText(context, "username is empty", Toast.LENGTH_SHORT).show()
@@ -56,6 +56,10 @@ class RegisterFragment : Fragment() {
             a = false
             Toast.makeText(context, "email is empty", Toast.LENGTH_SHORT).show()
         }
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text).matches()){
+            a = false
+            Toast.makeText(context, "not email patter", Toast.LENGTH_SHORT).show()
+        }
         if(Utils.isempty(binding.etAddress)){
             a = false
             Toast.makeText(context, "address is empty", Toast.LENGTH_SHORT).show()
@@ -66,7 +70,7 @@ class RegisterFragment : Fragment() {
         }
         return a
     }
-    fun tryregister(){
+    private fun tryRegister(){
         try {
             val jsonObject = JSONObject()
             jsonObject.put("email", binding.etEmail.text.toString())

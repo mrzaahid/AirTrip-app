@@ -50,11 +50,15 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun checkForm():Boolean{
+    private fun checkForm():Boolean{
         var a = true
         if (isempty(binding.etLoginEmail)){
             Toast.makeText(context, "email is empty", Toast.LENGTH_SHORT).show()
             a = false
+        }
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etLoginEmail.text).matches()){
+            a = false
+            Toast.makeText(context, "not email patter", Toast.LENGTH_SHORT).show()
         }
         if (isempty(binding.etPassword)){
             Toast.makeText(context, "password is empty", Toast.LENGTH_SHORT).show()
@@ -62,7 +66,7 @@ class LoginFragment : Fragment() {
         }
         return a
     }
-    fun tryLogin(){
+    private fun tryLogin(){
         try {
             val jsonObject = JSONObject()
             jsonObject.put("email", binding.etLoginEmail.text.toString())
@@ -75,7 +79,11 @@ class LoginFragment : Fragment() {
 //                    delay(2000)
 //                }
                 if (it.isSuccessful){
-                    Toast.makeText(context, "sign in succeed ${it.body()!!.accessToken}", Toast.LENGTH_SHORT).show()
+                    mainViewModel.setAccessToken(it.body()!!.accessToken)
+                    mainViewModel.getAccesToken().observe(viewLifecycleOwner){token->
+                        Toast.makeText(context, "sign in succeed $token", Toast.LENGTH_SHORT).show()
+                    }
+
                 }else{
                     if(it.code()==401){
                         Toast.makeText(

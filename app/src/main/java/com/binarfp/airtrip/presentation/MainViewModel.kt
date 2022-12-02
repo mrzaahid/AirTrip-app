@@ -1,10 +1,7 @@
 package com.binarfp.airtrip.presentation
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.binarfp.airtrip.data.LocalRepository
 import com.binarfp.airtrip.model.ResponseLogin
 import com.binarfp.airtrip.model.ResponseRegist
@@ -40,4 +37,14 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
             Log.e("code",data.code().toString())
         }
     }
+
+    fun setAccessToken(token:String){
+        viewModelScope.launch {
+            localRepository.setAccessToken(token)
+        }
+    }
+    fun getAccesToken():LiveData<String>{
+        return localRepository.getAccessToken().asLiveData()
+    }
+
 }
