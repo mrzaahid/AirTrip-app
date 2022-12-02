@@ -1,5 +1,6 @@
 package com.binarfp.airtrip.data.network
 
+import com.binarfp.airtrip.model.ResponseRegist
 import com.binarfp.airtrip.model.User
 
 class AirTripDataSource(private val api : AirTripAPIService) {
@@ -11,7 +12,8 @@ class AirTripDataSource(private val api : AirTripAPIService) {
         address : String,
         password : String,
         role_id : Int
-    ) : User {
+    ) : ResponseRegist {
         return api.register(name,image,phone,address,email,password,role_id)
     }
+
 }

@@ -57,7 +57,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideMovieDataSource(apiService: AirTripAPIService): AirTripDataSource {
+    fun provideAirTripDataSource(apiService: AirTripAPIService): AirTripDataSource {
         return AirTripDataSource(apiService)
     }
 }
