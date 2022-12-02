@@ -49,4 +49,5 @@
     <string name="payment_2">Payment 2</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="Update">Update</string>
 </resources>
