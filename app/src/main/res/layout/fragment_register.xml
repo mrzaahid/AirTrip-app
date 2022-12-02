@@ -30,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,14 +75,15 @@
         android:background="@drawable/border"
         android:drawableStart="@drawable/ic_email"
         android:drawablePadding="16dp"
-
         android:hint="@string/email"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="@+id/et_number"
         app:layout_constraintStart_toStartOf="@+id/et_number"
-        app:layout_constraintTop_toBottomOf="@+id/et_number" />
+        app:layout_constraintTop_toBottomOf="@+id/et_number"
+        android:inputType="textEmailAddress" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

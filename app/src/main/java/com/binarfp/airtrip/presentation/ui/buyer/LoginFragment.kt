@@ -5,13 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentLoginBinding
+import com.binarfp.airtrip.presentation.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
+    private val mainViewModel : MainViewModel by viewModels()
     private lateinit var binding: FragmentLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,4 +35,10 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
     }
+
+    fun checkform(){
+        val a =true
+
+    }
+
 }
