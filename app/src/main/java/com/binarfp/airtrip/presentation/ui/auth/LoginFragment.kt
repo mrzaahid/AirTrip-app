@@ -82,6 +82,7 @@ class LoginFragment : Fragment() {
                     mainViewModel.setAccessToken(it.body()!!.accessToken)
                     mainViewModel.getAccesToken().observe(viewLifecycleOwner){token->
                         Toast.makeText(context, "sign in succeed $token", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
                     }
 
                 }else{

@@ -43,18 +43,4 @@
         android:name="com.binarfp.airtrip.presentation.ui.buyer.HomeActivity"
         android:label="activity_home"
         tools:layout="@layout/activity_home" />
-    <fragment
-        android:id="@+id/roundFragment"
-        android:name="com.binarfp.airtrip.presentation.ui.buyer.RoundFragment"
-        android:label="fragment_round"
-        tools:layout="@layout/fragment_round" >
-        <action
-            android:id="@+id/action_roundFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/resultFragment"
-        android:name="com.binarfp.airtrip.presentation.ui.buyer.ResultFragment"
-        android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
 </navigation>

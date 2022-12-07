@@ -29,25 +29,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_discover"
-        android:text="@string/place_with_us"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:fontFamily="sans-serif-condensed"
         android:layout_marginTop="5dp"
-        android:textColor="@color/black"/>
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/place_with_us"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="170sp">
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="60dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="70dp"
             android:background="@drawable/border_black"
             app:cardCornerRadius="20dp">
 
@@ -83,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
+                    android:backgroundTint="@color/light_blue"
                     android:text="@string/one_way"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -196,6 +197,16 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/blue_base"
+        app:itemIconTint="@color/color_bottom_nav"
+        app:itemTextColor="@color/color_bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_bottom" />
 
 
 
