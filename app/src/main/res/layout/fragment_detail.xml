@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="20dp"
     android:layout_margin="20dp"
@@ -139,12 +139,12 @@
             android:id="@+id/tv_date_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="@string/date"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_place_departure"
-            app:layout_constraintTop_toBottomOf="@+id/tv_place_departure" />
+            app:layout_constraintStart_toStartOf="@+id/tv_airport_depart"
+            app:layout_constraintTop_toBottomOf="@+id/tv_airport_depart" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -164,12 +164,13 @@
             android:id="@+id/tv_time_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/time"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/duration"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@+id/tv_place_arrived"
-            app:layout_constraintTop_toBottomOf="@+id/tv_detail_place_arrived" />
+            app:layout_constraintStart_toStartOf="@+id/tv_aiport_arrive"
+            app:layout_constraintTop_toBottomOf="@+id/tv_aiport_arrive" />
 
         <TextView
             android:id="@+id/tv_duration"
@@ -226,6 +227,23 @@
             app:layout_constraintStart_toStartOf="@+id/tv_price_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
+        <TextView
+            android:id="@+id/tv_airport_depart"
+            android:layout_width="135dp"
+            android:layout_height="34dp"
+            android:text="@string/aitport_depart_ex"
+            app:layout_constraintStart_toStartOf="@+id/tv_place_departure"
+            app:layout_constraintTop_toBottomOf="@+id/tv_place_departure" />
+
+        <TextView
+            android:id="@+id/tv_aiport_arrive"
+            android:layout_width="150dp"
+            android:layout_height="34dp"
+            android:text="@string/airport_arrived_ex"
+            app:layout_constraintEnd_toEndOf="@+id/tv_detail_place_arrived"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_place_arrived"
+            android:textAlignment="viewEnd"/>
+
         <Button
             android:id="@+id/btn_payment1"
             android:layout_width="wrap_content"
@@ -257,6 +275,7 @@
             android:layout_height="64dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="36dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="@color/blue_base"
             android:padding="15sp"
             android:text="@string/confirm"
@@ -268,7 +287,7 @@
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"

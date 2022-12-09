@@ -64,6 +64,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
     //room database libraries
     implementation "androidx.room:room-ktx:2.4.3"
+    androidTestImplementation 'org.junit.jupiter:junit-jupiter'
     kapt "androidx.room:room-compiler:2.4.3"
     //encrypt database
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
@@ -99,4 +100,7 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:2.7.1"
     //Junit 4 FrameWork
     testImplementation "junit:junit:"
+    //mock
+    implementation "io.mockk:mockk:1.13.1"
+    testImplementation "io.mockk:mockk:1.13.1"
 }

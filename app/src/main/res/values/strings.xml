@@ -51,4 +51,10 @@
     <string name="cancel">Cancel</string>
     <string name="Update">Update</string>
     <string name="logout">Logout</string>
+    <string name="aitport_depart_ex">Indra Gandhi Intenational Airport</string>
+    <string name="airport_arrived_ex">Subhash Chandra Bose Internatonal Airport</string>
+    <string name="boarding_pass">Boarding Pass</string>
+    <string name="passenger_name">Passenger Name</string>
+    <string name="name_ex">Lionel Messi</string>
+    <string name="duration">Duration</string>
 </resources>
