@@ -57,4 +57,5 @@
     <string name="passenger_name">Passenger Name</string>
     <string name="name_ex">Lionel Messi</string>
     <string name="duration">Duration</string>
+    <string name="find_your_destination">Find Your Destination</string>
 </resources>
