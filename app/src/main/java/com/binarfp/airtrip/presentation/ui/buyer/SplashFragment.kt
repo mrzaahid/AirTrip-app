@@ -8,10 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
+import com.binarfp.airtrip.databinding.FragmentSplashBinding
 import java.util.*
 
 
 class SplashFragment : Fragment() {
+    private lateinit var binding: FragmentSplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,15 +23,18 @@ class SplashFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        binding = FragmentSplashBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Handler().postDelayed({
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
+        }
+        binding.button2.setOnClickListener {
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-        }, 2000)
+        }
     }
 }

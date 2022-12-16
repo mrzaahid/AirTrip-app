@@ -2,6 +2,7 @@ package com.binarfp.airtrip.data
 
 import com.binarfp.airtrip.data.local.preference.DataStoreDataSource
 import com.binarfp.airtrip.data.network.AirTripDataSource
+import com.binarfp.airtrip.model.ResponseGetAirport
 import com.binarfp.airtrip.model.ResponseLogin
 import com.binarfp.airtrip.model.ResponseRegist
 import kotlinx.coroutines.flow.Flow
@@ -23,10 +24,14 @@ class LocalRepository(
     ):Response<ResponseLogin>{
         return airTripDataSource.login(requestBody)
     }
-    suspend fun setAccessToken(token:String){
-        dataStoreDataSource.setAccessToken(token)
+    suspend fun setAccessToken(token:String):Boolean{
+        return dataStoreDataSource.setAccessToken(token)
     }
     fun getAccessToken():Flow<String>{
         return dataStoreDataSource.getAccessToken()
     }
+    suspend fun getAirports():ResponseGetAirport{
+        return airTripDataSource.getAirports()
+    }
+
 }

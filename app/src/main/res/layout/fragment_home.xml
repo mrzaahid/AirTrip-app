@@ -124,35 +124,50 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_booking" />
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/et_from"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/border2"
-                        android:drawableStart="@drawable/ic_takeoff"
-                        android:drawablePadding="16dp"
+                        android:layout_marginTop="16dp"
                         android:hint="@string/from"
-                        android:padding="15dp"
                         app:layout_constraintEnd_toEndOf="@+id/btn_round"
                         app:layout_constraintStart_toStartOf="@+id/btn_oneway"
-                        app:layout_constraintTop_toBottomOf="@+id/btn_oneway" />
+                        app:layout_constraintTop_toBottomOf="@+id/btn_oneway"
+                        app:startIconDrawable="@drawable/ic_takeoff"
+                        >
+                        <AutoCompleteTextView
+                            android:id="@+id/auto_text1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textSize="20sp"
+                            />
 
-                    <EditText
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/et_to"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:background="@drawable/border2"
-                        android:drawableStart="@drawable/ic_arrived"
-                        android:drawablePadding="16dp"
+                        android:layout_marginTop="16dp"
                         android:hint="@string/to"
-                        android:padding="15dp"
                         app:layout_constraintEnd_toEndOf="@+id/btn_round"
                         app:layout_constraintStart_toStartOf="@+id/btn_oneway"
-                        app:layout_constraintTop_toBottomOf="@+id/et_from" />
+                        app:layout_constraintTop_toBottomOf="@+id/et_from"
+                        app:startIconDrawable="@drawable/ic_arrived">
 
-                    <EditText
+                        <AutoCompleteTextView
+                            android:id="@+id/auto_text2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:textSize="20sp">
+                        </AutoCompleteTextView>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
                         android:id="@+id/et_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
