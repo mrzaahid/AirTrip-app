@@ -58,4 +58,20 @@
     <string name="name_ex">Lionel Messi</string>
     <string name="duration">Duration</string>
     <string name="find_your_destination">Find Your Destination</string>
+    <string name="seat_ex">2B</string>
+    <string name="flight_data">Flight Data</string>
+    <string name="arrival">Arrival</string>
+    <string name="flight_class">Flight Class</string>
+    <string name="departure_airport">Departure Airport</string>
+    <string name="arrival_airport">Arrival Airport</string>
+    <string name="create_flight">Create Flight</string>
+    <string name="update_flight">Update Flight</string>
+    <string name="delete_flight">Delete Flight</string>
+    <string name="airport_data">Airport Data</string>
+    <string name="iata">IATA</string>
+    <string name="airport_name">Airport Name</string>
+    <string name="airport_address">Airport Address</string>
+    <string name="create_aiport">Create Aiport</string>
+    <string name="update_airport">Update Airport</string>
+    <string name="delete_airport">Delete Airport</string>
 </resources>

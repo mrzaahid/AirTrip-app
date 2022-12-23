@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModel
 import com.binarfp.airtrip.databinding.ActivityProfileBinding
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.ui.auth.MainActivity
@@ -23,4 +24,10 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun setUserInfo(){
+
+    }
+
+
 }

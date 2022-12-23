@@ -11,6 +11,7 @@ class DataStoreManager @Inject constructor(private val context: Context) {
     fun getPreference(context: Context): Flow<Preferences>{
         return context.userDataStore.data
     }
+
     suspend fun setAccessToken(token:String):Boolean{
         context.userDataStore.edit {
             it[ACCESSTOKEN] = token

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.admin.AirportsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/airport_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/airport_data"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_iata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border_black_thick"
+                android:hint="@string/iata"
+                android:padding="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/airport_title"
+                app:layout_constraintStart_toStartOf="@+id/airport_title"
+                app:layout_constraintTop_toBottomOf="@+id/airport_title" />
+
+            <EditText
+                android:id="@+id/et_airport_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border_black_thick"
+                android:hint="@string/airport_name"
+                android:padding="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_iata"
+                app:layout_constraintStart_toStartOf="@+id/et_iata"
+                app:layout_constraintTop_toBottomOf="@+id/et_iata" />
+
+            <EditText
+                android:id="@+id/et_airport_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border_black_thick"
+                android:hint="@string/airport_address"
+                android:padding="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_airport_name"
+                app:layout_constraintStart_toStartOf="@+id/et_airport_name"
+                app:layout_constraintTop_toBottomOf="@+id/et_airport_name" />
+
+            <Button
+                android:id="@+id/btn_create_airport"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/blue_base"
+                android:padding="15sp"
+                android:text="@string/create_aiport"
+                app:layout_constraintStart_toStartOf="@+id/et_airport_address"
+                app:layout_constraintTop_toBottomOf="@+id/et_airport_address" />
+
+            <Button
+                android:id="@+id/btn_update_airport"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/blue_base"
+                android:padding="15sp"
+                android:text="@string/update_airport"
+                app:layout_constraintEnd_toEndOf="@+id/et_airport_address"
+                app:layout_constraintTop_toBottomOf="@+id/et_airport_address" />
+
+            <Button
+                android:id="@+id/btn_delete_airport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="70dp"
+                android:backgroundTint="@color/blue_base"
+                android:padding="15sp"
+                android:text="@string/delete_airport"
+                app:layout_constraintEnd_toEndOf="@+id/btn_update_airport"
+                app:layout_constraintStart_toStartOf="@+id/btn_create_airport"
+                app:layout_constraintTop_toBottomOf="@+id/btn_update_airport" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</FrameLayout>
