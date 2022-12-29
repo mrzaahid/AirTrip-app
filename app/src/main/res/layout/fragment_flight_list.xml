@@ -27,11 +27,27 @@
         android:background="@drawable/border_black"
         android:padding="5dp"
         android:text="@string/add_flight"
-        android:textSize="15sp"
         android:textColor="@color/black"
+        android:textSize="15sp"
+        app:drawableStartCompat="@drawable/ic_add_boc"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9"
-        app:drawableStartCompat="@drawable/ic_add_boc" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_search_data" />
+
+    <TextView
+        android:id="@+id/tv_search_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/border_black"
+        android:drawablePadding="5dp"
+        android:padding="10dp"
+        android:text="@string/search"
+        app:drawableStartCompat="@drawable/ic_search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_data_flight"
