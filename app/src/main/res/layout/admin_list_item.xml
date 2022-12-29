@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_list_flight"
+            android:layout_width="match_parent"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="5dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_time_departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/time_ex"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_place_departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/place_init_ex"
+                    app:layout_constraintStart_toStartOf="@+id/tv_time_departure"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_departure"/>
+
+                <TextView
+                    android:id="@+id/tv_detail_place_departure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/place_detail_ex"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toEndOf="@+id/tv_place_departure"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_departure" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/to"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_time_arrived"
+                    app:layout_constraintHorizontal_bias="0.467"
+                    app:layout_constraintStart_toEndOf="@+id/tv_time_departure"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_time_arrived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="100dp"
+                    android:text="@string/time_arrived_ex"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_delete"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_detail_place_arrived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/place_arrived_detail_ex"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_time_arrived"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_arrived" />
+
+                <TextView
+                    android:id="@+id/tv_place_arrived"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:textSize="15sp"
+                    android:text="@string/place_arrived_ex"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_detail_place_arrived"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_time_arrived" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/price"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView8"
+                    app:layout_constraintStart_toStartOf="@+id/textView8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/price_ex"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView7"
+                    app:layout_constraintStart_toStartOf="@+id/textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+                <ImageView
+                    android:id="@+id/btn_delete"
+                    android:layout_width="34dp"
+                    android:layout_height="29dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_delete"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_edit"
+                    android:layout_width="34dp"
+                    android:layout_height="29dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_delete"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_delete" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+</FrameLayout>

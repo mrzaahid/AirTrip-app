@@ -74,4 +74,5 @@
     <string name="create_aiport">Create Aiport</string>
     <string name="update_airport">Update Airport</string>
     <string name="delete_airport">Delete Airport</string>
+    <string name="add_flight">Add Flight</string>
 </resources>

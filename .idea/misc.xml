@@ -3,14 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/drawable/add_photo_alternate.xml" value="0.209" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_home.xml" value="0.152" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_main.xml" value="0.2223731884057971" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/admin_list_item.xml" value="0.2" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/drop_down_item.xml" value="0.22554347826086957" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_airports.xml" value="0.22554347826086957" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_boarding.xml" value="0.152" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_flight.xml" value="0.2" />
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_flight_list.xml" value="0.264" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_login.xml" value="0.22554347826086957" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_profile.xml" value="0.2151268115942029" />

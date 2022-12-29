@@ -35,7 +35,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
-    def baseurl = "https://airtripcom-c12-be-production.up.railway.app/"
+    def baseurl = "https://airtrip-be-production.up.railway.app/"
     flavorDimensions 'default'
     productFlavors {
         production {
