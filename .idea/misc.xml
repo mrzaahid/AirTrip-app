@@ -3,32 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_home.xml" value="0.152" />
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_home.xml" value="0.20833333333333334" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_main.xml" value="0.2223731884057971" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_profile.xml" value="0.264" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/drop_down_item.xml" value="0.22554347826086957" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_airports.xml" value="0.22554347826086957" />
+        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/activity_profile.xml" value="0.176" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_boarding.xml" value="0.152" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_flight.xml" value="0.2" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_login.xml" value="0.22554347826086957" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_profile.xml" value="0.2151268115942029" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_register.xml" value="0.20833333333333334" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_result.xml" value="0.136" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_round.xml" value="0.17889492753623187" />
         <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/fragment_splash.xml" value="0.2223731884057971" />
-        <entry key="..\:/KULIAH/MBKM/LAndro/AirTrip/app/src/main/res/layout/item_search.xml" value="0.17889492753623187" />
         <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/drawable/add_a_photo.xml" value="0.1045" />
-        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/activity_home.xml" value="0.15" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/activity_home.xml" value="0.2" />
         <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/activity_profile.xml" value="0.1" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/drop_down_item.xml" value="0.22" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_airports.xml" value="0.18" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_boarding.xml" value="0.22" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_detail.xml" value="0.16" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_detail_flight.xml" value="0.25" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_flight.xml" value="0.16" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_login.xml" value="0.12" />
         <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_register.xml" value="0.15" />
-        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_result.xml" value="0.2" />
-        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_round.xml" value="0.2" />
-        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_splash.xml" value="0.16" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_result.xml" value="0.14" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_round.xml" value="0.18" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_search_airport.xml" value="0.22" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_search_airport_fragment.xml" value="0.1" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_splash.xml" value="0.14" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_ticket.xml" value="0.25" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/fragment_ticket_framgent.xml" value="0.1" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/item_airport.xml" value="0.22" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/layout/item_search.xml" value="0.22" />
+        <entry key="..\:/kuliahan/studi independend Android/AirTrip/AirTrip-app/app/src/main/res/menu/menu_bottom.xml" value="0.10641891891891891" />
       </map>
     </option>
   </component>

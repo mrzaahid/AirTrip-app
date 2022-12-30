@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_profileActivity"
             app:destination="@id/profileActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchAirportFragment"
+            app:destination="@id/searchAirportFragment" />
     </fragment>
     <fragment
         android:id="@+id/roundFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_roundFragment_to_profileActivity"
             app:destination="@id/profileActivity" />
+        <action
+            android:id="@+id/action_roundFragment_to_searchAirportFragment"
+            app:destination="@id/searchAirportFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -48,10 +54,48 @@
         android:id="@+id/detailFragment"
         android:name="com.binarfp.airtrip.presentation.ui.buyer.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_ticketFragment"
+            app:destination="@id/ticketFragment" />
+    </fragment>
     <activity
         android:id="@+id/profileActivity"
         android:name="com.binarfp.airtrip.presentation.ui.profile.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
+    <fragment
+        android:id="@+id/searchAirportFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.SearchAirportFragment"
+        android:label="fragment_search_airport"
+        tools:layout="@layout/fragment_search_airport" >
+        <action
+            android:id="@+id/action_searchAirportFragment_to_searchAirport2"
+            app:destination="@id/searchAirport2" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchAirport2"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.SearchAirport2"
+        android:label="SearchAirport2" >
+        <action
+            android:id="@+id/action_searchAirport2_to_roundFragment"
+            app:destination="@id/roundFragment" />
+        <action
+            android:id="@+id/action_searchAirport2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.TicketFragment"
+        android:label="fragment_ticket"
+        tools:layout="@layout/fragment_ticket" >
+        <action
+            android:id="@+id/action_ticketFragment_to_boardingFragment"
+            app:destination="@id/boardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardingFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.BoardingFragment"
+        android:label="fragment_boarding"
+        tools:layout="@layout/fragment_boarding" />
 </navigation>

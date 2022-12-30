@@ -12,9 +12,9 @@
         android:title="@string/history"/>
 
     <item
-        android:id="@+id/ticket"
-        android:icon="@drawable/airplane_ticket"
-        android:title="Ticket" />
+        android:id="@+id/notif"
+        android:icon="@drawable/ic_baseline_bell"
+        android:title="Notification" />
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_account"

@@ -1,33 +1,24 @@
 package com.binarfp.airtrip.presentation.ui.buyer
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.binarfp.airtrip.R
+import com.binarfp.airtrip.databinding.FragmentBoardingBinding
+import com.binarfp.airtrip.model.BoardingPassDetail
+import com.binarfp.airtrip.presentation.MainViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [BoardingFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class BoardingFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    private lateinit var binding :FragmentBoardingBinding
+    private val mainViewModel : MainViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -35,26 +26,36 @@ class BoardingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_boarding, container, false)
+        binding = FragmentBoardingBinding.inflate(layoutInflater)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment BoardingFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            BoardingFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val board = arguments?.getSerializable("boardingpass") as BoardingPassDetail
+        binding.tvSeat.text = board.seat
+        val flight = board.flight
+        binding.tvPlaceDeparture.text = flight?.fromAirport?.iata
+        binding.tvDetailPlaceDeparture.text = flight?.fromAirport?.name
+        binding.tvPlaceArrived.text = flight?.toAirport?.iata
+        binding.tvDetailPlaceArrived.text = flight?.toAirport?.name
+        val date = flight?.departure?.split("T")?.get(0)
+        val time = flight?.departure?.split("T")!![1].substring(0,5)
+        val date2 = flight.arrival?.split("T")?.get(0)
+        val time2 = flight.arrival?.split("T")!![1].substring(0,5)
+        binding.tvTimeDeparture.text = time
+        binding.tvTimeArrived.text = time2
+        val duration = duration(time,time2)
+        binding.tvDuration.text = duration
+        binding.tvPassengerName.text = arguments?.getString("name")
+        binding.tvDate.text = date
+        binding.tvSeatClass.text = flight.flightClass
+        binding.tvSeat.text = board.seat
     }
+}
+fun duration(time1 : String,time2 : String):String{
+    val date1 = SimpleDateFormat(time1, Locale.getDefault()).parse(time1)
+    val date2 = SimpleDateFormat(time2, Locale.getDefault()).parse(time2)
+    val duration = DateUtils.getRelativeTimeSpanString(date1.time, date2.time, DateUtils.MINUTE_IN_MILLIS)
+    return duration.toString()
 }

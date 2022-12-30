@@ -1,15 +1,10 @@
 package com.binarfp.airtrip.data.network
 
-import com.binarfp.airtrip.model.ResponseGetAirport
-import com.binarfp.airtrip.model.ResponseLogin
-import com.binarfp.airtrip.model.ResponseRegist
-import com.binarfp.airtrip.model.User
+import com.binarfp.airtrip.model.*
 import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface AirTripAPIService {
     @POST("/register")
@@ -22,6 +17,25 @@ interface AirTripAPIService {
         @Body requestBody: RequestBody
 //    ): ResponseRegist
     ):Response<ResponseLogin>
+
     @GET("/airports")
     suspend fun getAirports() : ResponseGetAirport
+
+    @GET("/flights")
+    suspend fun getFlights() : responseFlight
+
+    @POST("/tickets/create")
+    suspend fun createTickets(
+        @Header("Authorization")token:String,
+        @Body requestBody: RequestBody
+    ):responsTicket
+
+    @GET("/tickets/history")
+    suspend fun getHistory(
+        @Header("Authorization")token: String,
+    ):History
+    @GET("/whoami")
+    suspend fun getProfile(
+        @Header("Authorization")token:String
+    )
 }

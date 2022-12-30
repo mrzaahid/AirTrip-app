@@ -1,8 +1,13 @@
 package com.binarfp.airtrip.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 
+data class responseUser(
+    @SerializedName("data")
+    val data: User
+):Serializable
 data class User(
     @SerializedName("id")
     val id : Int?,
@@ -24,4 +29,10 @@ data class User(
     val updatedAt : Date,
     @SerializedName("role_id")
     val role_id : Int
-)
+):Serializable
+data class Role(
+    @SerializedName("id")
+    val id : Int,
+    @SerializedName("name")
+    val buyer : String
+):Serializable

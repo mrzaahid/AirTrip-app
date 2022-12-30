@@ -79,107 +79,144 @@
                 <Button
                     android:id="@+id/btn_oneway"
                     style="@style/standarButton"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
                     android:backgroundTint="@color/light_blue"
                     android:text="@string/one_way"
                     android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_booking" />
 
                 <Button
                     android:id="@+id/btn_round"
                     style="@style/standarButton"
-                    android:layout_width="130dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginEnd="24dp"
                     android:text="@string/round"
                     android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.94"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_booking" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_from"
-                    android:layout_width="match_parent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/border2"
-                    android:drawableStart="@drawable/ic_takeoff"
-                    android:drawablePadding="16dp"
                     android:hint="@string/from"
-                    android:padding="15dp"
+                    android:inputType="none"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/btn_round"
                     app:layout_constraintStart_toStartOf="@+id/btn_oneway"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_oneway" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_oneway"
+                    app:startIconDrawable="@drawable/ic_takeoff">
 
-                <EditText
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_from"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="20sp">
+                    </AutoCompleteTextView>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_to"
-                    android:layout_width="match_parent"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
                     android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/border2"
-                    android:drawableStart="@drawable/ic_arrived"
                     android:drawablePadding="16dp"
                     android:hint="@string/to"
-                    android:padding="15dp"
+                    android:inputType="none"
+                    android:textSize="20sp"
                     app:layout_constraintEnd_toEndOf="@+id/et_from"
                     app:layout_constraintStart_toStartOf="@+id/et_from"
-                    app:layout_constraintTop_toBottomOf="@+id/et_from" />
+                    app:layout_constraintTop_toBottomOf="@+id/et_from"
+                    app:startIconDrawable="@drawable/ic_arrived">
 
-                <EditText
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_to"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="20sp"></AutoCompleteTextView>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <TextView
                     android:id="@+id/et_date"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="170dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/border_black"
                     android:drawableStart="@drawable/ic_date"
                     android:drawablePadding="16dp"
                     android:hint="@string/departure"
                     android:padding="15dp"
+                    android:singleLine="true"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/et_to"
                     app:layout_constraintStart_toStartOf="@+id/et_to"
                     app:layout_constraintTop_toBottomOf="@+id/et_to" />
 
-                <EditText
+                <TextView
                     android:id="@+id/et_return"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="200dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/border_black"
                     android:drawableStart="@drawable/ic_date"
                     android:drawablePadding="16dp"
+                    android:hint="@string/returnn"
                     android:padding="15dp"
-                    android:text="@string/returnn"
-                    app:layout_constraintEnd_toEndOf="@+id/et_to"
-                    app:layout_constraintStart_toStartOf="@+id/et_to"
-                    app:layout_constraintTop_toBottomOf="@+id/et_to" />
-
-                <EditText
-                    android:id="@+id/et_traveler"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="170dp"
-                    android:background="@drawable/border_black"
-                    android:drawableStart="@drawable/ic_seat"
-                    android:drawablePadding="16dp"
-                    android:hint="@string/seat_class"
-                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/et_date"
                     app:layout_constraintStart_toStartOf="@+id/et_date"
                     app:layout_constraintTop_toBottomOf="@+id/et_date" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/et_traveler"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/seat_class"
+                    app:layout_constraintEnd_toEndOf="@+id/et_to"
+                    app:layout_constraintStart_toStartOf="@+id/et_to"
+                    app:layout_constraintTop_toBottomOf="@+id/et_return"
+                    app:startIconDrawable="@drawable/ic_seat">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/auto_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:textSize="20sp"></AutoCompleteTextView>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_search"

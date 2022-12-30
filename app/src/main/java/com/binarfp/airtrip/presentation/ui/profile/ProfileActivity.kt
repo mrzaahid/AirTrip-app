@@ -26,7 +26,6 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun setUserInfo(){
-
     }
 
 

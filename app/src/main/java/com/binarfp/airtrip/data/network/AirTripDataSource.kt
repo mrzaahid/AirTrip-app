@@ -1,14 +1,12 @@
 package com.binarfp.airtrip.data.network
 
-import com.binarfp.airtrip.model.ResponseGetAirport
-import com.binarfp.airtrip.model.ResponseLogin
-import com.binarfp.airtrip.model.ResponseRegist
-import com.binarfp.airtrip.model.User
+import com.binarfp.airtrip.model.*
 import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
+import javax.inject.Inject
 
-class AirTripDataSource(private val api : AirTripAPIService) {
+class AirTripDataSource @Inject constructor(private val api : AirTripAPIService) {
     suspend fun register(
         requestBody: RequestBody
 //    ): ResponseRegist
@@ -25,4 +23,19 @@ class AirTripDataSource(private val api : AirTripAPIService) {
         return api.getAirports()
     }
 
+    suspend fun getFlights() : responseFlight{
+        return api.getFlights()
+    }
+    suspend fun createTicket(
+        token:String,
+        requestBody: RequestBody
+    ):responsTicket{
+        return  api.createTickets(token,requestBody)
+    }
+
+    suspend fun getHistory(
+        token: String
+    ):History{
+        return api.getHistory(token)
+    }
 }

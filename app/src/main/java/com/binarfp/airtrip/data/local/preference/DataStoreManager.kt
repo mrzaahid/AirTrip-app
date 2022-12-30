@@ -22,9 +22,20 @@ class DataStoreManager @Inject constructor(private val context: Context) {
     get() = context.userDataStore.data.map {
         it[ACCESSTOKEN] ?: ""
     }
+    suspend fun setRead(read:Int):Boolean{
+        context.userDataStore.edit {
+            it[READ] = read
+        }
+        return true
+    }
+    val read:Flow<Int>
+    get() = context.userDataStore.data.map {
+        it[READ] ?: 0
+    }
     companion object{
         private const val DATASTORE_NAME = "user_preference"
         private val ACCESSTOKEN = stringPreferencesKey("username")
+        private val READ = intPreferencesKey("read")
 
         private val Context.userDataStore by preferencesDataStore(
             name = DATASTORE_NAME

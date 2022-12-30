@@ -35,7 +35,7 @@ android {
     buildFeatures{
         viewBinding = true
     }
-    def baseurl = "https://airtripcom-c12-be-production.up.railway.app/"
+    def baseurl = "https://airtrip-be-production.up.railway.app/"
     flavorDimensions 'default'
     productFlavors {
         production {
@@ -44,6 +44,7 @@ android {
             buildConfigField("String", "BASE_URL", "\"${baseurl}\"")
         }
     }
+
 }
 
 dependencies {
@@ -108,4 +109,7 @@ dependencies {
     testImplementation "com.google.truth:truth:1.0.1"
     testImplementation "androidx.test:runner:1.4.0"
     testImplementation 'org.robolectric:robolectric:4.4'
+    //qrgenerator
+    implementation 'com.github.androidmads:QRGenerator:1.0.1'
+    implementation 'com.google.zxing:core:3.3.3'
 }

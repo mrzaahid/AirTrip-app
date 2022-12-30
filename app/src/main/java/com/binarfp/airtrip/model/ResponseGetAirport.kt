@@ -1,6 +1,7 @@
 package com.binarfp.airtrip.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ResponseGetAirport(
     @SerializedName("data")
@@ -15,4 +16,4 @@ data class DataAirport(
     val name : String,
     @SerializedName("address")
     val address : String
-)
+) : Serializable
