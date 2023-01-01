@@ -2,28 +2,26 @@ package com.binarfp.airtrip.data.network
 
 import com.binarfp.airtrip.model.*
 import okhttp3.RequestBody
-import retrofit2.Response
-import retrofit2.http.Body
 import javax.inject.Inject
 
 class AirTripDataSource @Inject constructor(private val api : AirTripAPIService) {
     suspend fun register(
         requestBody: RequestBody
 //    ): ResponseRegist
-    ): Response<ResponseRegist>{
+    ): ResponseRegist{
         return api.register(requestBody)
     }
     suspend fun login(
         requestBody: RequestBody
 //    ): ResponseRegist
-    ):Response<ResponseLogin>{
+    ):ResponseLogin{
         return api.login(requestBody)
     }
     suspend fun getAirports() : ResponseGetAirport{
         return api.getAirports()
     }
 
-    suspend fun getFlights() : responseFlight{
+    suspend fun getFlights() : ResponseFlight{
         return api.getFlights()
     }
     suspend fun createTicket(
@@ -37,5 +35,28 @@ class AirTripDataSource @Inject constructor(private val api : AirTripAPIService)
         token: String
     ):History{
         return api.getHistory(token)
+    }
+    suspend fun getProfile(
+        token: String
+    ):ResponseUser{
+        return api.getProfile(token)
+    }
+    suspend fun updateUser(
+        token: String,
+        id : Int,
+        requestBody: RequestBody
+    ):ResponseUpdateUser{
+        return api.updateUser(token,id,requestBody)
+    }
+    suspend fun getAirportbyId(
+        token: String,
+        id: Int
+    ):DataAirport{
+        return api.getAirportbyId(token,id)
+    }
+    suspend fun getNotif(
+        token: String
+    ):ResponsesNotif{
+        return api.getNotif(token)
     }
 }

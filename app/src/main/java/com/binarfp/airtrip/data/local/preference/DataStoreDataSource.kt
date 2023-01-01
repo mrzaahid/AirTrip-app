@@ -10,10 +10,10 @@ class DataStoreDataSource @Inject constructor(private val dataStoreManager: Data
     fun getAccessToken():Flow<String>{
         return dataStoreManager.accessToken
     }
-    suspend fun setRead(angka:Int):Boolean{
-        return dataStoreManager.setRead(angka)
+    suspend fun setImageString(sImage:String):Boolean{
+        return dataStoreManager.setImageString(sImage)
     }
-    fun getRead():Flow<Int>{
-        return dataStoreManager.read
+    fun getImageString():Flow<String>{
+        return dataStoreManager.imageString
     }
 }

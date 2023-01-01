@@ -4,12 +4,12 @@ package com.binarfp.airtrip.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class responseFlight(
+data class ResponseFlight(
     @SerializedName("status")
     val status : String?,
     @SerializedName("data")
     val data : List<Flight>
-)
+):Serializable
 data class Flight(
     @SerializedName("Airplane")
     val airplane: Airplane?,
@@ -34,5 +34,9 @@ data class Flight(
     @SerializedName("to_airport")
     val toAirport: Airport?,
     @SerializedName("updatedAt")
-    val updatedAt: String?
+    val updatedAt: String?,
+    @SerializedName("from")
+    val from : Int,
+    @SerializedName("to")
+    val to : Int
 ):Serializable

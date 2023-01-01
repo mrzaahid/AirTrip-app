@@ -22,20 +22,21 @@ class DataStoreManager @Inject constructor(private val context: Context) {
     get() = context.userDataStore.data.map {
         it[ACCESSTOKEN] ?: ""
     }
-    suspend fun setRead(read:Int):Boolean{
+
+    val imageString:Flow<String>
+    get() = context.userDataStore.data.map {
+        it[IMAGESTRING] ?: ""
+    }
+    suspend fun setImageString (sImage:String):Boolean{
         context.userDataStore.edit {
-            it[READ] = read
+            it[IMAGESTRING] = sImage
         }
         return true
-    }
-    val read:Flow<Int>
-    get() = context.userDataStore.data.map {
-        it[READ] ?: 0
     }
     companion object{
         private const val DATASTORE_NAME = "user_preference"
         private val ACCESSTOKEN = stringPreferencesKey("username")
-        private val READ = intPreferencesKey("read")
+        private val IMAGESTRING = stringPreferencesKey("imageString")
 
         private val Context.userDataStore by preferencesDataStore(
             name = DATASTORE_NAME

@@ -1,9 +1,7 @@
 package com.binarfp.airtrip.presentation.ui.buyer
 
 import android.app.DatePickerDialog
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +15,7 @@ import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentHomeBinding
 import com.binarfp.airtrip.model.DataAirport
 import com.binarfp.airtrip.presentation.MainViewModel
-import com.binarfp.airtrip.presentation.ui.auth.MainActivity
+import com.google.android.material.badge.BadgeDrawable
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -50,16 +48,26 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        mainViewModel.getAccesToken().observe(viewLifecycleOwner){
-//            mainViewModel.getHistory("Bearer $it")
-//        }
-//        mainViewModel.history.observe(viewLifecycleOwner){
-//            val x = it.size
-//            if(x>0){
-//                historyNotif(x)
-//            }
-//            Log.e("his",it.toString()+x)
-//        }
+        mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+            if(it.isNullOrEmpty()){
+
+            }else{
+                mainViewModel.getHistory(it)
+                mainViewModel.history.observe(viewLifecycleOwner){
+                    val x = it.payload?.data?.size
+                    if(x.toString().isNotEmpty()){
+                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                    }
+                }
+                mainViewModel.getNotif(it)
+                mainViewModel.responsesNotif.observe(viewLifecycleOwner){
+                    val x = it.payload?.data?.size
+                    if(x.toString().isNotEmpty()){
+                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                    }
+                }
+            }
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
@@ -68,9 +76,11 @@ class HomeFragment : Fragment() {
                     true
                 }
                 R.id.notif->{
-                    val intent = Intent(context,MainActivity::class.java)
-                    mainViewModel.setAccessToken("")
-                    startActivity(intent)
+                    findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+                    true
+                }
+                R.id.history->{
+                    findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
                     true
                 }
                 else->{
@@ -99,11 +109,6 @@ class HomeFragment : Fragment() {
             airport2 = arguments?.getSerializable("airport2") as DataAirport
             binding.autoTo.setText(airport2.name)
         }
-//        mainViewModel.airport1.observe(viewLifecycleOwner){
-//            binding.etFrom.text = it.name
-//            Log.e("asd",it.toString())
-//            airport1 = it
-//        }
 
         val cal = Calendar.getInstance()
         val year = cal.get(Calendar.YEAR)
@@ -123,7 +128,8 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnSearch.setOnClickListener {
-            if (cekForm()){
+            if (cekForm(binding.autoFrom.text.toString(),binding.autoTo.text.toString(),
+                    binding.etDate.text.toString(),binding.autoText.text.toString())){
                 val bundle = Bundle()
                 bundle.putSerializable("airport1",airport1)
                 bundle.putSerializable("airport2",airport2)
@@ -137,9 +143,9 @@ class HomeFragment : Fragment() {
 
 
     }
-    fun cekForm():Boolean{
+    fun cekForm(from:String,to:String,date:String,seatclass:String):Boolean{
         var a = true
-        if (binding.autoFrom.text.isNullOrEmpty()){
+        if (from.isEmpty()){
             Toast.makeText(
                 requireContext(),
                 "your Departure Airport still empty",
@@ -147,34 +153,37 @@ class HomeFragment : Fragment() {
             ).show()
             a  = false
         }
-        if (binding.autoTo.text.isNullOrEmpty()){
+        if (to.isEmpty()){
             Toast.makeText(requireContext(), "Your Arrival Airport still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
         }
-        if (binding.etDate.text.isNullOrEmpty()){
+        if (date.isEmpty()){
             Toast.makeText(requireContext(), "Your Departure Date still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
         }
-        if (binding.autoText.text.isNullOrEmpty()){
+        if (seatclass.isEmpty()){
             Toast.makeText(requireContext(), "Your Seat Class still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
         }
         return a
     }
-    fun historyNotif(angka:Int){
-        var x = angka
-        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.history)
-        badge.backgroundColor = ContextCompat.getColor(requireContext(),R.color.grey_base)
-        badge.badgeTextColor = ContextCompat.getColor(requireContext(),R.color.white)
-        badge.maxCharacterCount = 2
+    fun historyNotif(badge: BadgeDrawable,angka:Int?):Boolean{
+        var a = false
+        if(angka!=null && angka >0) {
+            val x = angka
+            badge.backgroundColor = ContextCompat.getColor(requireContext(), R.color.grey_base)
+            badge.badgeTextColor = ContextCompat.getColor(requireContext(), R.color.white)
+            badge.maxCharacterCount = 3
 //        mainViewModel.getRead().observe(viewLifecycleOwner){
 //            x -= it
 //        }
-        badge.number = x
-        badge.isVisible = true
-
+            badge.number = x
+            badge.isVisible = true
+            a = true
+        }
+        return a
     }
 }

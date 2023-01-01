@@ -15,6 +15,7 @@ import com.binarfp.airtrip.databinding.FragmentResultBinding
 import com.binarfp.airtrip.model.DataAirport
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.ui.auth.MainActivity
+import com.zaahid.challenge6.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +36,30 @@ class ResultFragment : Fragment() {
                         bundle.putString("asal","home")
                         bundle.putSerializable("flight",flight)
                         findNavController().navigate(R.id.action_resultFragment_to_detailFragment,bundle)
+                    }
+                }
+            }
+            if (arguments?.getString("asal")=="round"){
+                mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+                    if (it.isNullOrEmpty()){
+                        val intent = Intent(context,MainActivity::class.java)
+                        bundle.putString("asal","result")
+                        startActivity(intent)
+                    }else{
+                        val airport1 = arguments?.getSerializable("airport1") as DataAirport
+                        val airport2 = arguments?.getSerializable("airport2") as DataAirport
+                        val date = arguments?.getString("date")
+                        val date2 = arguments?.getString("date2")
+                        val kelas = arguments?.getString("kelas")
+                        arguments?.getInt("id")?.let { it1 -> bundle.putInt("id", it1) }
+                        bundle.putString("asal","round")
+                        bundle.putSerializable("flight",flight)
+                        bundle.putSerializable("airport1",airport1)
+                        bundle.putSerializable("airport2",airport2)
+                        bundle.putString("date",date)
+                        bundle.putString("date2",date2)
+                        bundle.putString("kelas",kelas)
+                        findNavController().navigate(R.id.action_resultFragment_to_result2Fragment,bundle)
                     }
                 }
             }
@@ -63,14 +88,34 @@ class ResultFragment : Fragment() {
         val kelas = arguments?.getString("kelas")
         Log.e("lapor",airport1.toString()+airport2.toString()+date+kelas)
         mainViewModel.getFlights()
-        mainViewModel.getFlights.observe(viewLifecycleOwner){list->
-            val result = list.filter {data->
-                ((data.fromAirport?.id==airport1.id)&&(data.toAirport?.id==airport2.id))||
-                        date?.let { data.departure?.lowercase()?.indexOf(it) }!! > -1 ||
-                        kelas?.let { data.flightClass?.lowercase()?.indexOf(it) }!! > -1
+        mainViewModel.getFlights.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success->{
+                    val result = it.payload?.data?.filter {data->
+                        ((data.fromAirport?.id==airport1.id)&&(data.toAirport?.id==airport2.id))||
+                                date?.let {it-> data.departure?.lowercase()?.indexOf(it) }!! > -1
+                                kelas.let {it-> data.flightClass?.lowercase()?.indexOf(it.toString()) }!! > -1
+                    }
+                    if (result != null) {
+                        adapter.submitData(result)
+                    }
+                    binding.rvSearchResult.visibility=View.VISIBLE
+                    binding.pbAirport.visibility=View.GONE
+                    binding.tvError.visibility = View.GONE
+                }
+                is Resource.Loading->{
+                    binding.rvSearchResult.visibility=View.GONE
+                    binding.pbAirport.visibility=View.VISIBLE
+                    binding.tvError.visibility = View.GONE
+                }
+                is Resource.Error->{
+                    binding.tvError.visibility = View.VISIBLE
+                    binding.tvError.text = it.exception.toString()
+                    binding.rvSearchResult.visibility=View.GONE
+                    binding.pbAirport.visibility=View.GONE
+                }
+                is Resource.Empty ->{}
             }
-            adapter.submitData(result)
-//            Log.e("search",result.toString())
         }
     }
     private fun initList(view: View) {

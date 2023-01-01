@@ -1,8 +1,6 @@
 package com.binarfp.airtrip.presentation.ui.buyer
 
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentSplashBinding
-import com.binarfp.airtrip.model.DataAirport
 import com.binarfp.airtrip.presentation.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
@@ -38,6 +34,7 @@ class SplashFragment : Fragment() {
         super.onResume()
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.button.setOnClickListener {
             findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
         }
@@ -45,16 +42,9 @@ class SplashFragment : Fragment() {
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }
         mainViewModel.getAccesToken().observe(viewLifecycleOwner){
-            if (cekStatus(it)){
+            if (it.isNotEmpty()){
                 findNavController().navigate(R.id.action_splashFragment_to_homeActivity)
             }
         }
-    }
-    fun cekStatus(accesstoken:String):Boolean{
-        var x = true
-        if (accesstoken.isEmpty()){
-            x=false
-        }
-        return x
     }
 }

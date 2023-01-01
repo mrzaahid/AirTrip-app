@@ -112,4 +112,9 @@ dependencies {
     //qrgenerator
     implementation 'com.github.androidmads:QRGenerator:1.0.1'
     implementation 'com.google.zxing:core:3.3.3'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:4.14.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
+    //java.time
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

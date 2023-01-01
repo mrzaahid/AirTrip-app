@@ -19,7 +19,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-condensed"
                 android:text="@string/boarding_pass"
                 android:textColor="@color/white"
@@ -36,7 +36,7 @@
                 android:text="@string/place_detail_ex"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toStartOf="@+id/iv_line"
+                app:layout_constraintEnd_toStartOf="@+id/imageView4"
                 app:layout_constraintStart_toStartOf="@+id/tv_place_departure"
                 app:layout_constraintTop_toBottomOf="@+id/tv_place_departure" />
 
@@ -44,7 +44,7 @@
                 android:id="@+id/tv_place_departure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/place_init_ex"
                 android:textColor="@color/white"
                 android:textSize="35sp"
@@ -57,13 +57,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="30dp"
                 android:text="@string/place_arrived_detail_ex"
                 android:textAlignment="textEnd"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_line"
+                app:layout_constraintEnd_toEndOf="@+id/tv_place_arrived"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toBottomOf="@+id/tv_place_arrived" />
 
 
@@ -71,7 +70,7 @@
                 android:id="@+id/tv_place_arrived"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/place_arrived_ex"
                 android:textColor="@color/white"
                 android:textSize="35sp"
@@ -252,10 +251,12 @@
                         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
                     <ImageView
-                        android:layout_width="341dp"
+                        android:layout_width="0dp"
                         android:layout_height="53dp"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="32dp"
                         android:src="@drawable/ic_barcode"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

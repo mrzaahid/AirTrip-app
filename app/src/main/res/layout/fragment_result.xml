@@ -30,10 +30,32 @@
             app:layout_constraintStart_toStartOf="@+id/tv_search_result"
             app:layout_constraintTop_toBottomOf="@+id/tv_search_result"
             tools:listitem="@layout/item_search" />
+        <ProgressBar
+            android:id="@+id/pb_airport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="150dp"
+            android:textAlignment="center"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="No Result data found"
+            tools:visibility="visible" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
 
 </ScrollView>

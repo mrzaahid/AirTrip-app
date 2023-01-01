@@ -2,11 +2,12 @@ package com.binarfp.airtrip.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class History(
     @SerializedName("data")
     val data: List<HistoryData>?
-)
+):Serializable
 data class HistoryData(
     @SerializedName("boardingPasses")
     val boardingPasses: BoardingPasses?,
@@ -24,4 +25,4 @@ data class HistoryData(
     val totalPrice: Int?,
     @SerializedName("updatedAt")
     val updatedAt: String?
-)
+):Serializable

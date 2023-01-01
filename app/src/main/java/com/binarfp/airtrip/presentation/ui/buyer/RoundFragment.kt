@@ -2,22 +2,24 @@ package com.binarfp.airtrip.presentation.ui.buyer
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentRoundBinding
 import com.binarfp.airtrip.model.DataAirport
 import com.binarfp.airtrip.presentation.MainViewModel
+import com.google.android.material.badge.BadgeDrawable
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
-
+@AndroidEntryPoint
 class RoundFragment : Fragment() {
     private lateinit var binding : FragmentRoundBinding
     private val mainViewModel : MainViewModel by viewModels()
@@ -42,10 +44,38 @@ class RoundFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+            if(it.isNullOrEmpty()){
+
+            }else{
+                mainViewModel.getHistory(it)
+                mainViewModel.history.observe(viewLifecycleOwner){
+                    val x = it.payload?.data?.size
+                    if(x.toString().isNotEmpty()){
+                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                    }
+                }
+                mainViewModel.getNotif(it)
+                mainViewModel.responsesNotif.observe(viewLifecycleOwner){
+                    val x = it.payload?.data?.size
+                    if(x.toString().isNotEmpty()){
+                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                    }
+                }
+            }
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.profile->{
                     findNavController().navigate(R.id.action_roundFragment_to_profileActivity)
+                    true
+                }
+                R.id.notif->{
+                    findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+                    true
+                }
+                R.id.history->{
+                    findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
                     true
                 }
                 else->{
@@ -74,11 +104,6 @@ class RoundFragment : Fragment() {
             airport2 = arguments?.getSerializable("airport2") as DataAirport
             binding.autoTo.setText(airport2.name)
         }
-//        mainViewModel.airport1.observe(viewLifecycleOwner){
-//            binding.etFrom.text = it.name
-//            Log.e("asd",it.toString())
-//            airport1 = it
-//        }
 
         val cal = Calendar.getInstance()
         val year = cal.get(Calendar.YEAR)
@@ -114,9 +139,6 @@ class RoundFragment : Fragment() {
                 findNavController().navigate(R.id.action_roundFragment_to_resultFragment,bundle)
             }
         }
-
-
-
         val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.history)
         badge.backgroundColor = ContextCompat.getColor(requireContext(),R.color.grey_base)
         badge.badgeTextColor = ContextCompat.getColor(requireContext(),R.color.white)
@@ -148,6 +170,22 @@ class RoundFragment : Fragment() {
             Toast.makeText(requireContext(), "Your Seat Class still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
+        }
+        return a
+    }
+    fun historyNotif(badge: BadgeDrawable, angka:Int?):Boolean{
+        var a = false
+        if(angka!=null && angka >0) {
+            val x = angka
+            badge.backgroundColor = ContextCompat.getColor(requireContext(), R.color.grey_base)
+            badge.badgeTextColor = ContextCompat.getColor(requireContext(), R.color.white)
+            badge.maxCharacterCount = 3
+//        mainViewModel.getRead().observe(viewLifecycleOwner){
+//            x -= it
+//        }
+            badge.number = x
+            badge.isVisible = true
+            a = true
         }
         return a
     }

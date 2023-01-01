@@ -55,87 +55,123 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <EditText
-        android:id="@+id/et_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/border"
-        android:drawableStart="@drawable/ic_phone"
-        android:drawablePadding="16dp"
-        android:inputType="number"
-        android:hint="@string/phone"
-        android:padding="15dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/et_username"
-        app:layout_constraintStart_toStartOf="@+id/et_username"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="16dp"
+                android:hint="@string/phone"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/et_username"
+                app:layout_constraintStart_toStartOf="@+id/et_username"
+                app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/border"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="16dp"
-        android:hint="@string/email"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_number"
-        app:layout_constraintStart_toStartOf="@+id/et_number"
-        app:layout_constraintTop_toBottomOf="@+id/et_number"
-        android:inputType="textEmailAddress" />
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="16dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/et_number"
+                app:layout_constraintStart_toStartOf="@+id/et_number"
+                app:layout_constraintTop_toBottomOf="@+id/et_number" />
 
-    <EditText
-        android:inputType="text"
-        android:id="@+id/et_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/border"
-        android:drawableStart="@drawable/ic_home"
-        android:drawablePadding="16dp"
-        android:hint="@string/address"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_email"
-        app:layout_constraintStart_toStartOf="@+id/et_email"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/border"
+                android:drawableStart="@drawable/ic_home"
+                android:drawablePadding="16dp"
+                android:hint="@string/address"
+                android:inputType="text"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/et_email"
+                app:layout_constraintStart_toStartOf="@+id/et_email"
+                app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/border"
-        android:drawableStart="@drawable/ic_password"
-        android:drawablePadding="16dp"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_address"
-        app:layout_constraintStart_toStartOf="@+id/et_address"
-        app:layout_constraintTop_toBottomOf="@+id/et_address" />
+<!--    <EditText-->
+<!--        android:id="@+id/et_password"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:background="@drawable/border"-->
+<!--        android:drawableStart="@drawable/ic_password"-->
+<!--        android:drawablePadding="16dp"-->
+<!--        android:hint="@string/password"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:padding="15dp"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/et_address"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/et_address"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/et_address" />-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/et_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:boxBackgroundMode="none"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="@+id/et_address"
+                app:layout_constraintStart_toStartOf="@+id/et_address"
+                app:layout_constraintTop_toBottomOf="@+id/et_address"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_password">
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="50dp"
-        app:layout_constraintEnd_toEndOf="@+id/et_password"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password"
-        android:text="@string/signup"
-        style="@style/standarButton" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textinputpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    app:boxBackgroundMode="outline" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_signup"
+                style="@style/standarButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="50dp"
+                android:text="@string/signup"
+                app:layout_constraintEnd_toEndOf="@+id/et_password"
+                app:layout_constraintStart_toStartOf="@+id/et_password"
+                app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+            <TextView
+                android:id="@+id/tv_to_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/login"
+                android:textColor="@color/blue_base"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/btn_signup"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/btn_signup"
+                app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

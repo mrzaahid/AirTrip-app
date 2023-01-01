@@ -13,6 +13,7 @@ import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentRegisterBinding
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.Utils
+import com.zaahid.challenge6.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -40,6 +41,9 @@ class RegisterFragment : Fragment() {
         binding.btnSignup.setOnClickListener {
             if (checkForm()){ tryRegister() }
         }
+        binding.tvToLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
     }
 
     private fun checkForm():Boolean{
@@ -64,7 +68,7 @@ class RegisterFragment : Fragment() {
             a = false
             Toast.makeText(context, "address is empty", Toast.LENGTH_SHORT).show()
         }
-        if (Utils.isempty(binding.etPassword)){
+        if (binding.textinputpassword.text.isNullOrEmpty()){
             a = false
             Toast.makeText(context, "password is empty", Toast.LENGTH_SHORT).show()
         }
@@ -74,7 +78,7 @@ class RegisterFragment : Fragment() {
         try {
             val jsonObject = JSONObject()
             jsonObject.put("email", binding.etEmail.text.toString())
-            jsonObject.put("password", binding.etPassword.text.toString())
+            jsonObject.put("password", binding.textinputpassword.text.toString())
             jsonObject.put("phone", binding.etNumber.text.toString())
             jsonObject.put("name", binding.etUsername.text.toString() )
             jsonObject.put("address", binding.etAddress.text.toString())
@@ -82,17 +86,12 @@ class RegisterFragment : Fragment() {
             val requestBody =jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
             mainViewModel.registrasi(requestBody)
             mainViewModel.registResult.observe(viewLifecycleOwner){
-                if (it.isSuccessful){
+                if (it is Resource.Success){
                     Toast.makeText(context, "signup succeed", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                }else{
-                    if (it.code()==422){
-                        Toast.makeText(
-                            context,
-                            "This email already registered",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                }
+                if (it is Resource.Error){
+                    Toast.makeText(context, "Regist Failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }catch (e:Error){

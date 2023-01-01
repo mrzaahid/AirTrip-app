@@ -4,7 +4,14 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 import java.util.*
 
-data class responseUser(
+data class ResponseUpdateUser(
+    @SerializedName("data")
+    val data : User,
+    @SerializedName("accessToken")
+    val accessToken :String
+)
+
+data class ResponseUser(
     @SerializedName("data")
     val data: User
 ):Serializable
@@ -27,12 +34,14 @@ data class User(
     val createdAt : Date,
     @SerializedName("updatedAt")
     val updatedAt : Date,
-    @SerializedName("role_id")
-    val role_id : Int
+    @SerializedName("saldo")
+    val saldo : Int,
+    @SerializedName("role")
+    val role : Role
 ):Serializable
 data class Role(
     @SerializedName("id")
     val id : Int,
     @SerializedName("name")
-    val buyer : String
+    val name : String
 ):Serializable

@@ -22,6 +22,12 @@
         <action
             android:id="@+id/action_homeFragment_to_searchAirportFragment"
             app:destination="@id/searchAirportFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/roundFragment"
@@ -40,6 +46,12 @@
         <action
             android:id="@+id/action_roundFragment_to_searchAirportFragment"
             app:destination="@id/searchAirportFragment" />
+        <action
+            android:id="@+id/action_roundFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_roundFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -49,6 +61,9 @@
         <action
             android:id="@+id/action_resultFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_result2Fragment"
+            app:destination="@id/result2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -98,4 +113,43 @@
         android:name="com.binarfp.airtrip.presentation.ui.buyer.BoardingFragment"
         android:label="fragment_boarding"
         tools:layout="@layout/fragment_boarding" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_boardingFragment"
+            app:destination="@id/boardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" >
+        <action
+            android:id="@+id/action_notificationFragment_to_ticketFragment"
+            app:destination="@id/ticketFragment" />
+        <action
+            android:id="@+id/action_notificationFragment_to_notifFragment"
+            app:destination="@id/notifFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notifFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.NotifFragment"
+        android:label="fragment_notif"
+        tools:layout="@layout/fragment_notif" >
+        <action
+            android:id="@+id/action_notifFragment_to_boardingFragment"
+            app:destination="@id/boardingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/result2Fragment"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.Result2Fragment"
+        android:label="fragment_result2"
+        tools:layout="@layout/fragment_result2" >
+        <action
+            android:id="@+id/action_result2Fragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

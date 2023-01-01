@@ -6,7 +6,7 @@ import java.io.Serializable
 data class ResponseGetAirport(
     @SerializedName("data")
     val data : List<DataAirport>
-)
+):Serializable
 data class DataAirport(
     @SerializedName("id")
     val id : Int,

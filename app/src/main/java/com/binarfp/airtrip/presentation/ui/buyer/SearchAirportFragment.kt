@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentSearchAirportBinding
 import com.binarfp.airtrip.presentation.MainViewModel
+import com.zaahid.challenge6.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,6 +37,7 @@ class SearchAirportFragment : Fragment() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -54,21 +56,65 @@ class SearchAirportFragment : Fragment() {
         val searchview = binding.searchMovie
         searchview.queryHint = getString(R.string.search)
         searchview.isIconified = false
-        mainViewModel.getAirport.observe(viewLifecycleOwner){
-            adapter.submitData(it)
-        }
         initList(view)
+        mainViewModel.getAirports.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success->{
+                    val result = it.payload?.data
+                    if (result != null) {
+                        adapter.submitData(result)
+                    }
+                    binding.rvAirport.visibility=View.VISIBLE
+                    binding.pbAirport.visibility=View.GONE
+                    binding.tvError.visibility = View.GONE
+                }
+                is Resource.Loading->{
+                    binding.rvAirport.visibility=View.GONE
+                    binding.pbAirport.visibility=View.VISIBLE
+                    binding.tvError.visibility = View.GONE
+                }
+                is Resource.Error->{
+                    binding.tvError.visibility = View.VISIBLE
+                    binding.tvError.text = it.exception.toString()
+                    binding.rvAirport.visibility=View.GONE
+                    binding.pbAirport.visibility=View.GONE
+                }
+                is Resource.Empty ->{}
+            }
+        }
         searchview.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {a->
-                    mainViewModel.getAirport.observe(viewLifecycleOwner){list->
-                        val result = list.filter {data->
-                            (data.name.lowercase().indexOf(a) >-1) ||
-                                    (data.iata.lowercase().indexOf(a)>-1)||
-                                    (data.address.lowercase().indexOf(a)>-1)
+                    mainViewModel.getAirports.observe(viewLifecycleOwner){
+                        when(it){
+                            is Resource.Success->{
+                                val result = it.payload?.data?.filter {data->
+                                    (data.name.lowercase().indexOf(a) >-1) ||
+                                            (data.iata.lowercase().indexOf(a)>-1)||
+                                            (data.address.lowercase().indexOf(a)>-1)
+                                }
+                                if (result != null) {
+                                    adapter.submitData(result)
+                                }
+                                binding.rvAirport.visibility=View.VISIBLE
+                                binding.pbAirport.visibility=View.GONE
+                                binding.tvError.visibility = View.GONE
+                            }
+                            is Resource.Loading->{
+                                binding.rvAirport.visibility=View.GONE
+                                binding.pbAirport.visibility=View.VISIBLE
+                                binding.tvError.visibility = View.GONE
+                            }
+                            is Resource.Error->{
+                                binding.tvError.visibility = View.VISIBLE
+                                binding.tvError.text = it.exception.toString()
+                                binding.rvAirport.visibility=View.GONE
+                                binding.pbAirport.visibility=View.GONE
+                            }
+                            is Resource.Empty ->{
+
+                            }
                         }
-                        adapter.submitData(result)
-//                        Log.e("search",result.toString())
                     }
                 }
                 return true
