@@ -26,13 +26,13 @@ data class Flight(
     @SerializedName("flight_class")
     val flightClass: String?,
     @SerializedName("from_airport")
-    val fromAirport: Airport?,
+    val fromAirport: DataAirport?,
     @SerializedName("id")
     val id: Int?,
     @SerializedName("price")
     val price: Int?,
     @SerializedName("to_airport")
-    val toAirport: Airport?,
+    val toAirport: DataAirport?,
     @SerializedName("updatedAt")
     val updatedAt: String?,
     @SerializedName("from")

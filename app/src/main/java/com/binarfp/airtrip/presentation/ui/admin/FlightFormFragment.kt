@@ -1,23 +1,24 @@
 package com.binarfp.airtrip.presentation.ui.admin
 
-import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.view.get
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentFlightFormBinding
+import com.binarfp.airtrip.model.Airplane
 import com.binarfp.airtrip.model.DataAirport
+import com.binarfp.airtrip.model.Flight
 import com.binarfp.airtrip.presentation.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 @AndroidEntryPoint
 class FlightFormFragment : Fragment() {
@@ -44,47 +45,30 @@ class FlightFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val cal = Calendar.getInstance()
-        val year = cal.get(Calendar.YEAR)
-        val month = cal.get(Calendar.MONTH)
-        val day = cal.get(Calendar.DAY_OF_MONTH)
-        val dateSetListener = DatePickerDialog(requireContext(),{ view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR,year)
-            cal.set(Calendar.MONTH,monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-            val myFormat = "yyyy-MM-dd" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.etDeparture.text = sdf.format(cal.time)
-            mainViewModel.setdate1(binding.etDeparture.text.toString())
-        }, year, month, day)
-        val dateSetListener2 = DatePickerDialog(requireContext(),{ view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR,year)
-            cal.set(Calendar.MONTH,monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH,dayOfMonth)
-            val myFormat = "yyyy-MM-dd" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.etArrival.text = sdf.format(cal.time)
-            mainViewModel.setdate2(binding.etArrival.text.toString())
-        }, year, month, day)
+
         binding.etDeparture.setOnClickListener {
-            dateSetListener.show()
+            mainViewModel.setdate1(binding.etDeparture.text.toString())
         }
         binding.etArrival.setOnClickListener {
-            dateSetListener2.show()
+            mainViewModel.setdate2(binding.etArrival.text.toString())
         }
         binding.etDepartureAirport.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("id",3)
             mainViewModel.setprice(binding.etPrice.text.toString())
+            mainViewModel.seflightclass(binding.autoText.text.toString())
             findNavController().navigate(R.id.action_flightFormFragment_to_searchAirportFragment2,bundle)
         }
         binding.etArrivalAirport.setOnClickListener {
             val bundle = Bundle()
             bundle.putInt("id",3)
+            mainViewModel.setprice(binding.etPrice.text.toString())
+            mainViewModel.seflightclass(binding.autoText.text.toString())
             findNavController().navigate(R.id.action_flightFormFragment_to_searchAirportFragment2,bundle)
         }
         var airport1 : DataAirport? = null
         var airport2 : DataAirport? = null
+
         if ((arguments?.getInt("id") ?: 0) > 0){
             airport1 = arguments?.getSerializable("airport1") as DataAirport
             binding.etDepartureAirport.setText(airport1.name)
@@ -98,19 +82,49 @@ class FlightFormFragment : Fragment() {
             bundle.putString("asal","formflight")
             findNavController().navigate(R.id.action_flightFormFragment_to_searchAirplaneFragment,bundle)
         }
-//        if (requireArguments().getString("asal")=="formflight"){
-//        }
+        if (arguments?.getString("asal")=="formflight"){
+            val airplane = arguments?.getSerializable("airplane") as Airplane
+            mainViewModel.setairplane(airplane)
+        }
+        if (arguments?.getString("asal")=="update"){
+            val flight = arguments?.getSerializable("flight") as Flight
+            flight.description?.let { mainViewModel.setdesc(it) }
+            mainViewModel.setprice(flight.price.toString())
+            flight.airplane?.let { mainViewModel.setairplane(it) }
+            flight.departure?.let { mainViewModel.setdate1(it) }
+            flight.flightClass?.let { mainViewModel.seflightclass(it) }
+            flight.arrival?.let { mainViewModel.setdate2(it) }
+            flight.fromAirport?.let { mainViewModel.setairport1(it) }
+            flight.toAirport?.let { mainViewModel.setairport2(it) }
+            flight.airplane?.let { mainViewModel.setairplane(it) }
+            flight.description?.let { mainViewModel.setdesc(it) }
+            flight.id?.let { mainViewModel.setid(it) }
+            binding.btnCreateFlight.text = "Update Item"
+        }
+        if (arguments?.getString("tujuan")=="create"){
+           mainViewModel.setdesc(null)
+            mainViewModel.setprice(null)
+            mainViewModel.setairplane(null)
+           mainViewModel.setdate1(null)
+            mainViewModel.seflightclass(null)
+            mainViewModel.setdate2(null)
+            mainViewModel.setairport1(null)
+            mainViewModel.setairport2(null)
+             mainViewModel.setairplane(null)
+            mainViewModel.setdesc(null)
+             mainViewModel.setid(null)
+        }
         if (mainViewModel.date1 != null){
-            binding.etDeparture.text = mainViewModel.date1
+            binding.etDeparture.setText( mainViewModel.date1)
         }
         if (mainViewModel.date2!=null){
-            binding.etArrival.text = mainViewModel.date2
-        }
-        if (mainViewModel.flightClass!=null){
-            binding.etFlightClassAdmin[mainViewModel.flightClass!!]
+            binding.etArrival.setText(mainViewModel.date2)
         }
         if (mainViewModel.price!=null){
             binding.etPrice.setText(mainViewModel.price.toString())
+        }
+        if (mainViewModel.flightClass!=null){
+            binding.autoText.setText(mainViewModel.flightClass!!)
         }
         if (mainViewModel.airport1!=null){
             binding.etDepartureAirport.setText(mainViewModel.airport1?.name)
@@ -124,5 +138,83 @@ class FlightFormFragment : Fragment() {
         if (mainViewModel.desc!=null){
             binding.etDescription.setText(mainViewModel.desc)
         }
+        binding.btnCreateFlight.setOnClickListener {
+            if (checkForm()){
+                if (arguments?.getString("asal")=="update"){
+                    val jsonObject = JSONObject()
+                    jsonObject.put("departure", binding.etDeparture.text)
+                    jsonObject.put("arrival", binding.etArrival.text)
+                    jsonObject.put("flight_class",binding.autoText.text)
+                    jsonObject.put("price",binding.etPrice.text)
+                    jsonObject.put("from", mainViewModel.airport1!!.id)
+                    jsonObject.put("to",mainViewModel.airport2!!.id)
+                    jsonObject.put("airplane_id",mainViewModel.airplane?.id)
+                    jsonObject.put("description",binding.etDescription.text)
+                    val jsonObjectString =jsonObject.toString()
+                    val requestBody =jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+                    mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+                        mainViewModel.id?.let { it1 ->
+                            mainViewModel.updateFlight(it,
+                                it1,requestBody)
+                            findNavController().navigate(R.id.action_flightFormFragment_to_flightFragment)
+                        }
+                    }
+                }else{
+                    val jsonObject = JSONObject()
+                    jsonObject.put("departure", binding.etDeparture.text)
+                    jsonObject.put("arrival", binding.etArrival.text)
+                    jsonObject.put("flight_class",binding.autoText.text)
+                    jsonObject.put("price",binding.etPrice.text)
+                    jsonObject.put("from", mainViewModel.airport1!!.id)
+                    jsonObject.put("to",mainViewModel.airport2!!.id)
+                    jsonObject.put("airplane_id",mainViewModel.airplane?.id)
+                    jsonObject.put("description",binding.etDescription.text)
+                    val jsonObjectString =jsonObject.toString()
+                    val requestBody =jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+                    mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+                        mainViewModel.createFlight(it,requestBody)
+                        findNavController().navigate(R.id.action_flightFormFragment_to_flightFragment)
+                    }
+                }
+            }
+
+        }
     }
+    private fun checkForm():Boolean{
+        var a = true
+        if (binding.etDeparture.text.isNullOrEmpty()){
+            Toast.makeText(context, "Departure date is empty", Toast.LENGTH_SHORT).show()
+            a = false
+        }else
+        if (binding.etArrival.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "Arrival date number is empty", Toast.LENGTH_SHORT).show()
+        }else
+        if (binding.autoText.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "flight Class is empty", Toast.LENGTH_SHORT).show()
+        }else
+        if(binding.etPrice.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "price still empty", Toast.LENGTH_SHORT).show()
+        }else
+        if(binding.etDepartureAirport.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "Airport is empty", Toast.LENGTH_SHORT).show()
+        }else
+        if (binding.etArrivalAirport.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "Airport is empty", Toast.LENGTH_SHORT).show()
+        }else
+        if(binding.etAirplaneId.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "airplane is empty", Toast.LENGTH_SHORT).show()
+        }else
+        if(binding.etDescription.text.isNullOrEmpty()){
+            a = false
+            Toast.makeText(context, "description is empty", Toast.LENGTH_SHORT).show()
+        }
+        return a
+    }
+
 }

@@ -29,9 +29,11 @@ class SearchAirplaneFragment : Fragment() {
                 if (requireArguments().getString("asal") == "formflight") {
                     bundle.putString("asal","formflight")
                     bundle.putSerializable("airplane", it)
-                    findNavController().navigate(R.id.action_searchAirplaneFragment_to_flightFormFragment)
+                    findNavController().navigate(R.id.action_searchAirplaneFragment_to_flightFormFragment,bundle)
                 }
-            }, {}
+            }, {
+
+            },""
         )
     }
 

@@ -49,9 +49,17 @@ class AirTripDataSource @Inject constructor(private val api: AirTripAPIService) 
     //admin
     suspend fun updateFlight(
         token: String,
+        id: Int,
         requestBody: RequestBody
     ): ResponseFlight {
-        return api.updateflight(token, requestBody)
+        return api.updateflight(token, id,requestBody)
+    }
+    //admin
+    suspend fun deleteFlight(
+        token: String,
+        id: Int
+    ): ResponseMessage {
+        return api.deleteFlight(token, id)
     }
 
     suspend fun createTicket(

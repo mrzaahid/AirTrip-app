@@ -1,5 +1,6 @@
 package com.binarfp.airtrip.presentation.ui.admin
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentAdminBinding
 import com.binarfp.airtrip.presentation.MainViewModel
+import com.binarfp.airtrip.presentation.ui.buyer.HomeActivity
 import com.zaahid.challenge6.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,6 +41,13 @@ class AdminFragment : Fragment() {
             findNavController().navigate(R.id.action_adminFragment_to_flightFragment) }
         mainViewModel.getAccesToken().observe(viewLifecycleOwner){
             mainViewModel.getProfile(it)
+        }
+        binding.cardAirplane.setOnClickListener {
+            findNavController().navigate(R.id.action_adminFragment_to_addAirplaneFragment)
+        }
+        binding.cardToHome.setOnClickListener {
+            val intent = Intent(context,HomeActivity::class.java)
+            startActivity(intent)
         }
         mainViewModel.responseUser.observe(viewLifecycleOwner){
             if (it is Resource.Success){

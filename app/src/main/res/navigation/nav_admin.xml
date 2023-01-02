@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_adminFragment_to_ordersFragment"
             app:destination="@id/ordersFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_addAirplaneFragment"
+            app:destination="@id/addAirplaneFragment" />
     </fragment>
     <fragment
         android:id="@+id/flightFragment"
@@ -41,6 +44,9 @@
         <action
             android:id="@+id/action_flightFormFragment_to_searchAirplaneFragment"
             app:destination="@id/searchAirplaneFragment" />
+        <action
+            android:id="@+id/action_flightFormFragment_to_flightFragment"
+            app:destination="@id/flightFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchAirportFragment2"
@@ -68,4 +74,18 @@
             android:id="@+id/action_searchAirplaneFragment_to_flightFormFragment"
             app:destination="@id/flightFormFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addAirplaneFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.AddAirplaneFragment"
+        android:label="fragment_add_airplane"
+        tools:layout="@layout/fragment_add_airplane" >
+        <action
+            android:id="@+id/action_addAirplaneFragment_to_formAirplaneFragment"
+            app:destination="@id/formAirplaneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/formAirplaneFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.FormAirplaneFragment"
+        android:label="fragment_form_airplane"
+        tools:layout="@layout/fragment_form_airplane" />
 </navigation>

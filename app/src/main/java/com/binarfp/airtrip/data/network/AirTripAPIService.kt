@@ -46,9 +46,15 @@ interface AirTripAPIService {
     @PUT("/flights/update/{id}")
     suspend fun updateflight(
         @Header("Authorization")token: String,
+        @Path("id")id: Int,
         @Body requestBody: RequestBody
     ):ResponseFlight
-
+    //admin
+    @DELETE("/flights/delete/{id}")
+    suspend fun deleteFlight(
+        @Header("Authorization")token: String,
+        @Path("id")id: Int
+    ):ResponseMessage
 
     @POST("/tickets/create")
     suspend fun createTickets(

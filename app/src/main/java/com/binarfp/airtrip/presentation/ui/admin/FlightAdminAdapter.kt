@@ -53,8 +53,7 @@ class FlightAdminAdapter(private val itemClick : (Flight)->Unit, private val ite
                 binding.tvDateResult1.text = date
                 binding.tvDateResult2.text = date2
                 binding.buttonBook.visibility = View.GONE
-                binding.btnUpdateFlightAdmin.visibility = View.VISIBLE
-                binding.btnDeleteFlightAdmin.visibility = View.VISIBLE
+                binding.layoutBtn.visibility = View.VISIBLE
                 binding.btnUpdateFlightAdmin.setOnClickListener { itemClick(this) }
                 binding.btnDeleteFlightAdmin.setOnClickListener { itemClick2(this) }
             }

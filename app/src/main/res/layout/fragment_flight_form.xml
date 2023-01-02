@@ -27,7 +27,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <EditText
                 android:id="@+id/et_departure"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 app:layout_constraintStart_toStartOf="@+id/flight_title"
                 app:layout_constraintTop_toBottomOf="@+id/flight_title" />
 
-            <TextView
+            <EditText
                 android:id="@+id/et_arrival"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                 app:layout_constraintStart_toStartOf="@+id/et_departure_airport"
                 app:layout_constraintTop_toBottomOf="@+id/et_departure_airport" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_airplane_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

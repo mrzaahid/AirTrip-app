@@ -1,18 +1,18 @@
 package com.binarfp.airtrip.presentation.ui.admin
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.ItemAirplaneBinding
-import com.binarfp.airtrip.databinding.ItemSearchBinding
 import com.binarfp.airtrip.model.Airplane
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class AirplaneAdapter(private val itemClick : (Airplane)->Unit, private val itemClick2 : (Airplane)->Unit) :
+class AirplaneAdapter(private val itemClick : (Airplane)->Unit, private val itemClick2 : (Airplane)->Unit,private val asal:String) :
     RecyclerView.Adapter<AirplaneAdapter.ItemViewHolder>() {
     private val diffCallback = object : DiffUtil.ItemCallback<Airplane>(){
         override fun areItemsTheSame(oldItem: Airplane, newItem: Airplane): Boolean {
@@ -40,6 +40,7 @@ class AirplaneAdapter(private val itemClick : (Airplane)->Unit, private val item
                 binding.tvModelNumberSearch.text = this.modelNumber
                 binding.tvManufactureSearch.text = this.manufacture
                 binding.tvCapacitySearch.text = this.capacity.toString()
+                binding.tvId.text = this.id.toString()
                 Glide.with(binding.imageView7)
                     .load(this.image)
                     .apply(
@@ -47,6 +48,12 @@ class AirplaneAdapter(private val itemClick : (Airplane)->Unit, private val item
                             .placeholder(R.drawable.ic_airplane_240)
                             .error(R.drawable.ic_airplane_240))
                     .into(binding.imageView7)
+                if (asal=="addairplane"){
+                    binding.layoutBtn.visibility = View.VISIBLE
+                    binding.btnSelect.visibility = View.GONE
+                    binding.btnUpdateFlightAdmin.setOnClickListener { itemClick(this) }
+                    binding.btnDeleteFlightAdmin.setOnClickListener { itemClick2(this) }
+                }
             }
         }
     }

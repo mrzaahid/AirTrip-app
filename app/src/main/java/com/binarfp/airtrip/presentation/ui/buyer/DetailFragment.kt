@@ -96,6 +96,9 @@ class DetailFragment : Fragment() {
                 binding.tvSaldoResult.text = "Rp.$z"
             }
         }
+        binding.btnCancel.setOnClickListener {
+            findNavController().navigate(R.id.action_detailFragment_to_homeFragment)
+        }
         binding.btnConfirm.setOnClickListener {
             Log.e("flightid", flight.id.toString())
             mainViewModel.responseUser.observe(viewLifecycleOwner) {

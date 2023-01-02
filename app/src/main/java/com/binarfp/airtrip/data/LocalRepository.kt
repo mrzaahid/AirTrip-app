@@ -87,9 +87,17 @@ class LocalRepository @Inject constructor(
     //admin
     suspend fun updateFlight(
         token: String,
+        id: Int,
         requestBody: RequestBody
     ):Resource<ResponseFlight>{
-        return proceed { airTripDataSource.updateFlight(token,requestBody) }
+        return proceed { airTripDataSource.updateFlight(token,id,requestBody) }
+    }
+    //admin
+    suspend fun deleteFlight(
+        token: String,
+        id: Int
+    ):ResponseMessage{
+        return airTripDataSource.deleteFlight(token,id)
     }
 
     suspend fun createTicket(

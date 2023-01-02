@@ -74,15 +74,26 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
     //admin
     fun createFlight(token: String,requestBody: RequestBody){
         viewModelScope.launch {
-            val data = localRepository.createFlights(token,requestBody)
+            val data = localRepository.createFlights("Bearer token",requestBody)
             viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
         }
     }
     //admin
-    fun updateFlight(token: String,requestBody: RequestBody){
+    fun updateFlight(token: String,id: Int,requestBody: RequestBody){
         viewModelScope.launch {
-            val data =localRepository.updateFlight(token,requestBody)
+            val data =localRepository.updateFlight("Bearer $token",id,requestBody)
             viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
+        }
+    }
+
+
+    //admin
+    val deleteFlights : LiveData<ResponseMessage> get() = _deleteFlights
+    private val _deleteFlights = MutableLiveData<ResponseMessage>()
+    fun deleteFlight(token: String,id: Int){
+        viewModelScope.launch {
+            val data =localRepository.deleteFlight("Bearer $token",id)
+            viewModelScope.launch(Dispatchers.Main) { _deleteFlights.postValue(data) }
         }
     }
 
@@ -181,37 +192,41 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
         return localRepository.getImageString().asLiveData()
     }
     //dataState
-    var airport1 : Airport? =null
-    fun setairport1(airport: Airport){
+    var airport1 : DataAirport? =null
+    fun setairport1(airport: DataAirport?){
         airport1 =airport
     }
-    var airport2 : Airport? =null
-    fun setairport2(airport: Airport){
+    var airport2 : DataAirport? =null
+    fun setairport2(airport: DataAirport?){
         airport2 =airport
     }
     var date1 : String? =null
-    fun setdate1(date :String){
+    fun setdate1(date: String?){
         date1 = date
     }
     var date2 : String? = null
-    fun setdate2(date:String){
+    fun setdate2(date: String?){
         date2 = date
     }
-    var flightClass : Int? = null
-    fun seflightclass(string: Int){
+    var flightClass : String? = null
+    fun seflightclass(string: String?){
         flightClass = string
     }
     var price : String? = null
-    fun setprice(string: String){
+    fun setprice(string: String?){
         price = string
     }
     var airplane : Airplane? = null
-    fun setairplane(string: Airplane){
+    fun setairplane(string: Airplane?){
         airplane = string
     }
     var desc : String? = null
-    fun setdesc(string: String){
+    fun setdesc(string: String?){
         desc = string
+    }
+    var id: Int? =null
+    fun setid(int: Int?){
+        id = int
     }
 
 
