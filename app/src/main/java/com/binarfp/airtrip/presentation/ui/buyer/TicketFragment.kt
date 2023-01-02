@@ -36,7 +36,7 @@ class TicketFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ticket = arguments?.getSerializable("ticket") as Ticket
+        val ticket = requireArguments().getSerializable("ticket") as Ticket
             val invoice = ticket.invoiceNumber
             binding.tvPassengerName.text = ticket.username
             binding.tvFlightType.text = ticket.flightType

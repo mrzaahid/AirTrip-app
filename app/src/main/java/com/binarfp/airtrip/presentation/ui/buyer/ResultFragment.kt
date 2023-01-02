@@ -87,15 +87,15 @@ class ResultFragment : Fragment() {
         val date = arguments?.getString("date")
         val kelas = arguments?.getString("kelas")
         Log.e("lapor",airport1.toString()+airport2.toString()+date+kelas)
-        mainViewModel.getFlights()
+        mainViewModel.getAccesToken().observe(viewLifecycleOwner){
+            if (kelas != null) {
+                mainViewModel.searchFligts(it,date.toString().substring(0,3),airport1.id,airport2.id,kelas)
+            }
+        }
         mainViewModel.getFlights.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success->{
-                    val result = it.payload?.data?.filter {data->
-                        ((data.fromAirport?.id==airport1.id)&&(data.toAirport?.id==airport2.id))||
-                                date?.let {it-> data.departure?.lowercase()?.indexOf(it) }!! > -1
-                                kelas.let {it-> data.flightClass?.lowercase()?.indexOf(it.toString()) }!! > -1
-                    }
+                    val result = it.payload?.data
                     if (result != null) {
                         adapter.submitData(result)
                     }

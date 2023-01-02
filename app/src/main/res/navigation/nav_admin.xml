@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/adminFragment">
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_flightFragment"
+            app:destination="@id/flightFragment" />
+        <action
+            android:id="@+id/action_adminFragment_to_ordersFragment"
+            app:destination="@id/ordersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flightFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.FlightFragment"
+        android:label="fragment_flight"
+        tools:layout="@layout/fragment_flight" >
+        <action
+            android:id="@+id/action_flightFragment_to_flightFormFragment"
+            app:destination="@id/flightFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/flightFormFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.FlightFormFragment"
+        android:label="fragment_flight_form"
+        tools:layout="@layout/fragment_flight_form" >
+        <action
+            android:id="@+id/action_flightFormFragment_to_searchAirportFragment2"
+            app:destination="@id/searchAirportFragment2" />
+        <action
+            android:id="@+id/action_flightFormFragment_to_searchAirplaneFragment"
+            app:destination="@id/searchAirplaneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchAirportFragment2"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.SearchAirportFragment"
+        android:label="fragment_search_airport"
+        tools:layout="@layout/fragment_search_airport" >
+        <action
+            android:id="@+id/action_searchAirportFragment2_to_searchAirport22"
+            app:destination="@id/searchAirport22" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchAirport22"
+        android:name="com.binarfp.airtrip.presentation.ui.buyer.SearchAirport2"
+        android:label="SearchAirport2" >
+        <action
+            android:id="@+id/action_searchAirport22_to_flightFormFragment"
+            app:destination="@id/flightFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchAirplaneFragment"
+        android:name="com.binarfp.airtrip.presentation.ui.admin.SearchAirplaneFragment"
+        android:label="fragment_search_airplane"
+        tools:layout="@layout/fragment_search_airplane" >
+        <action
+            android:id="@+id/action_searchAirplaneFragment_to_flightFormFragment"
+            app:destination="@id/flightFormFragment" />
+    </fragment>
+</navigation>

@@ -35,6 +35,10 @@ class SearchAirport2 : Fragment() {
                 bundle.putInt("id",2)
                 findNavController().navigate(R.id.action_searchAirport2_to_roundFragment,bundle)
             }
+            if (requireArguments().getInt("id")==3){
+                bundle.putInt("id",3)
+                findNavController().navigate(R.id.action_searchAirport22_to_flightFormFragment,bundle)
+            }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {

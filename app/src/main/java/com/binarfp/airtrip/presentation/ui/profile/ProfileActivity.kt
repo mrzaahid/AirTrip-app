@@ -23,6 +23,7 @@ import com.binarfp.airtrip.databinding.ActivityProfileBinding
 import com.binarfp.airtrip.model.User
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.Utils
+import com.binarfp.airtrip.presentation.ui.admin.AdminActivity
 import com.binarfp.airtrip.presentation.ui.auth.MainActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -52,6 +53,8 @@ class ProfileActivity : AppCompatActivity() {
         mainViewModel.responseUpdateUser.observe(this){
             if (it is Resource.Success){
                 mainViewModel.setAccessToken(it.payload!!.accessToken)
+                val intent=Intent(this,PeralihanActivity::class.java)
+                startActivity(intent)
             }
         }
         binding.btnLogout.setOnClickListener {
@@ -134,6 +137,15 @@ class ProfileActivity : AppCompatActivity() {
             }
 
         }
+        binding.cardToHome.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+        }
+        binding.btnAdmin.setOnClickListener {
+            val intent = Intent(this,AdminActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 

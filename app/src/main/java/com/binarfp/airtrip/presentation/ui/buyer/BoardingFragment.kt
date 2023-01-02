@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentBoardingBinding
-import com.binarfp.airtrip.model.Airport
 import com.binarfp.airtrip.model.BoardingPassDetail
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.Utils
@@ -33,8 +33,7 @@ class BoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val board = arguments?.getSerializable("boardingpass") as BoardingPassDetail
-        Toast.makeText(context, board.toString(), Toast.LENGTH_SHORT).show()
+        val board = requireArguments().getSerializable("boardingpass") as BoardingPassDetail
         binding.tvSeat.text = board.seat
         val flight = board.flight
         binding.tvPlaceDeparture.text = flight?.fromAirport?.iata
@@ -53,6 +52,19 @@ class BoardingFragment : Fragment() {
         binding.tvDate.text = date
         binding.tvSeatClass.text = flight.flightClass
         binding.tvSeat.text = board.seat
+        if (flight.airplane!=null){
+            binding.tvAirplane.text = flight.airplane?.manufacture +" "+ flight.airplane!!.modelNumber
+            binding.tvAirplane.setOnClickListener {
+                val airplane = flight.airplane
+                val bundle = Bundle()
+                bundle.putSerializable("airplane",airplane)
+                findNavController().navigate(R.id.action_boardingFragment_to_airplaneFragment,bundle)
+            }
+        }else{
+            binding.tvAirplane.visibility = View.GONE
+            binding.textView5.visibility = View.GONE
+        }
+
         if (arguments?.getString("asal")=="history"){
             mainViewModel.getAirports()
             mainViewModel.getAirports.observe(viewLifecycleOwner){

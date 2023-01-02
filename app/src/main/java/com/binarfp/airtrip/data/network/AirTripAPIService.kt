@@ -27,6 +27,28 @@ interface AirTripAPIService {
 
     @GET("/flights")
     suspend fun getFlights() : ResponseFlight
+    @GET("/flights/search")
+    suspend fun searchFlights(
+        @Header("Authorization")token: String,
+        @Query("departureDate")departureDate : String,
+        @Query("from")from:Int,
+        @Query("to")to:Int,
+        @Query("flightClass")flightClass:String
+    ) : ResponseFlight
+
+    //admin
+    @POST("/flights/create")
+    suspend fun createFlights(
+        @Header("Authorization")token: String,
+        @Body requestBody: RequestBody
+    ):ResponseFlight
+    //admin
+    @PUT("/flights/update/{id}")
+    suspend fun updateflight(
+        @Header("Authorization")token: String,
+        @Body requestBody: RequestBody
+    ):ResponseFlight
+
 
     @POST("/tickets/create")
     suspend fun createTickets(
@@ -37,6 +59,12 @@ interface AirTripAPIService {
     @GET("/tickets/history")
     suspend fun getHistory(
         @Header("Authorization")token: String,
+    ):History
+
+    //admin
+    @GET("/tickets")
+    suspend fun getTickets(
+        @Header("Authorization")token: String
     ):History
     @GET("/whoami")
     suspend fun getProfile(
@@ -54,5 +82,11 @@ interface AirTripAPIService {
     suspend fun getNotif(
         @Header("Authorization")token: String
     ):ResponsesNotif
+
+
+    @GET("/airplanes")
+    suspend fun getAirplanes(
+        @Header("Authorization")token: String
+    ):ResponseAirplane
 
 }

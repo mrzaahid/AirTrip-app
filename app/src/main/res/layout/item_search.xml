@@ -7,12 +7,14 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="15dp"
     android:layout_marginVertical="10dp"
+    android:paddingBottom="10dp"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp">
 
         <TextView
             android:id="@+id/tv_time_departure"
@@ -154,9 +156,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/book_now"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_price"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="@+id/iv_seat"
@@ -181,6 +181,37 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/tv_place_arrived"
             app:layout_constraintTop_toBottomOf="@+id/tv_place_arrived" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_seat_class">
+
+            <Button
+                android:id="@+id/btn_update_flight_admin"
+                style="@style/standarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:layout_weight="1"
+                android:text="@string/Update" />
+
+            <Button
+                android:id="@+id/btn_delete_flight_admin"
+                style="@style/standarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_weight="1"
+                android:text="Delete" />
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

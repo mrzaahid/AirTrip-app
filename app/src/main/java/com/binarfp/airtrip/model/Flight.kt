@@ -11,7 +11,7 @@ data class ResponseFlight(
     val data : List<Flight>
 ):Serializable
 data class Flight(
-    @SerializedName("Airplane")
+    @SerializedName("airplane")
     val airplane: Airplane?,
     @SerializedName("arrival")
     val arrival: String?,

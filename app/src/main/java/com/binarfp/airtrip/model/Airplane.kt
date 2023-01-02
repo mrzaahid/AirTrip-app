@@ -4,6 +4,10 @@ package com.binarfp.airtrip.model
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
+data class ResponseAirplane(
+    @SerializedName("data")
+    val data : List<Airplane>
+)
 data class Airplane(
     @SerializedName("capacity")
     val capacity: Int?,

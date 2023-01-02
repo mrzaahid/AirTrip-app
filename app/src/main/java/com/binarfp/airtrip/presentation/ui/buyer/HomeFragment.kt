@@ -55,15 +55,19 @@ class HomeFragment : Fragment() {
                 mainViewModel.getHistory(it)
                 mainViewModel.history.observe(viewLifecycleOwner){
                     val x = it.payload?.data?.size
-                    if(x.toString().isNotEmpty()){
-                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                    if (x != null) {
+                        if(x>0){
+                            historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                        }
                     }
                 }
                 mainViewModel.getNotif(it)
                 mainViewModel.responsesNotif.observe(viewLifecycleOwner){
                     val x = it.payload?.data?.size
-                    if(x.toString().isNotEmpty()){
-                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                    if (x != null) {
+                        if(x>0){
+                            historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                        }
                     }
                 }
             }
@@ -152,17 +156,17 @@ class HomeFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
             a  = false
-        }
+        }else
         if (to.isEmpty()){
             Toast.makeText(requireContext(), "Your Arrival Airport still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
-        }
+        }else
         if (date.isEmpty()){
             Toast.makeText(requireContext(), "Your Departure Date still empty", Toast.LENGTH_SHORT)
                 .show()
             a = false
-        }
+        }else
         if (seatclass.isEmpty()){
             Toast.makeText(requireContext(), "Your Seat Class still empty", Toast.LENGTH_SHORT)
                 .show()
@@ -177,9 +181,6 @@ class HomeFragment : Fragment() {
             badge.backgroundColor = ContextCompat.getColor(requireContext(), R.color.grey_base)
             badge.badgeTextColor = ContextCompat.getColor(requireContext(), R.color.white)
             badge.maxCharacterCount = 3
-//        mainViewModel.getRead().observe(viewLifecycleOwner){
-//            x -= it
-//        }
             badge.number = x
             badge.isVisible = true
             a = true

@@ -51,15 +51,19 @@ class RoundFragment : Fragment() {
                 mainViewModel.getHistory(it)
                 mainViewModel.history.observe(viewLifecycleOwner){
                     val x = it.payload?.data?.size
-                    if(x.toString().isNotEmpty()){
-                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                    if (x != null) {
+                        if(x>0){
+                            historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.history),x)
+                        }
                     }
                 }
                 mainViewModel.getNotif(it)
                 mainViewModel.responsesNotif.observe(viewLifecycleOwner){
                     val x = it.payload?.data?.size
-                    if(x.toString().isNotEmpty()){
-                        historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                    if (x != null) {
+                        if(x>0){
+                            historyNotif(binding.bottomNavigationView.getOrCreateBadge(R.id.notif),x)
+                        }
                     }
                 }
             }
@@ -71,11 +75,11 @@ class RoundFragment : Fragment() {
                     true
                 }
                 R.id.notif->{
-                    findNavController().navigate(R.id.action_homeFragment_to_notificationFragment)
+                    findNavController().navigate(R.id.action_roundFragment_to_notificationFragment)
                     true
                 }
                 R.id.history->{
-                    findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
+                    findNavController().navigate(R.id.action_roundFragment_to_historyFragment)
                     true
                 }
                 else->{
@@ -113,18 +117,24 @@ class RoundFragment : Fragment() {
             cal.set(Calendar.YEAR,year)
             cal.set(Calendar.MONTH,monthOfYear)
             cal.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+            val myFormat = "yyyy-MM-dd" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            binding.etDate.text = sdf.format(cal.time)
+        }, year, month, day)
+        val dateSetListener2 = DatePickerDialog(requireContext(),{ view, year, monthOfYear, dayOfMonth ->
+            cal.set(Calendar.YEAR,year)
+            cal.set(Calendar.MONTH,monthOfYear)
+            cal.set(Calendar.DAY_OF_MONTH,dayOfMonth)
+            val myFormat = "yyyy-MM-dd" // mention the format you need
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            binding.etReturn.text = sdf.format(cal.time)
         }, year, month, day)
         binding.etDate.setOnClickListener {
             dateSetListener.show()
-            val myFormat = "yyyy-MM-dd" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.etDate.setText(sdf.format(cal.getTime()))
         }
         binding.etReturn.setOnClickListener {
-            dateSetListener.show()
-            val myFormat = "yyyy-MM-dd" // mention the format you need
-            val sdf = SimpleDateFormat(myFormat, Locale.US)
-            binding.etReturn.setText(sdf.format(cal.getTime()))
+            dateSetListener2.show()
+
         }
 
         binding.btnSearch.setOnClickListener {
@@ -139,12 +149,6 @@ class RoundFragment : Fragment() {
                 findNavController().navigate(R.id.action_roundFragment_to_resultFragment,bundle)
             }
         }
-        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.history)
-        badge.backgroundColor = ContextCompat.getColor(requireContext(),R.color.grey_base)
-        badge.badgeTextColor = ContextCompat.getColor(requireContext(),R.color.white)
-        badge.maxCharacterCount = 2
-        badge.number = 10
-        badge.isVisible = true
     }
     fun cekForm():Boolean{
         var a = true
@@ -180,9 +184,7 @@ class RoundFragment : Fragment() {
             badge.backgroundColor = ContextCompat.getColor(requireContext(), R.color.grey_base)
             badge.badgeTextColor = ContextCompat.getColor(requireContext(), R.color.white)
             badge.maxCharacterCount = 3
-//        mainViewModel.getRead().observe(viewLifecycleOwner){
-//            x -= it
-//        }
+
             badge.number = x
             badge.isVisible = true
             a = true

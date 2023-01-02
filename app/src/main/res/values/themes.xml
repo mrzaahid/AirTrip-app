@@ -33,10 +33,13 @@
         <item name="android:padding">11sp</item>
         <item name="android:layout_width">237dp</item>
     </style>
+
     <style name="Theme.AirTrip.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.AirTrip.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.AirTrip.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

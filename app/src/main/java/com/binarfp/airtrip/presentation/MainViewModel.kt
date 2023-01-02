@@ -52,26 +52,6 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
 //            Log.e("data",data.data.toString() )
         }
     }
-    val getAirport : LiveData<DataAirport> get() = _getAirport
-    private val _getAirport = MutableLiveData<DataAirport>()
-    fun getAirportbyId(
-        token: String,
-        id: Int
-    ){
-        viewModelScope.launch {
-            localRepository.getAirportbyId("Bearer $token",id)
-        }
-    }
-    val getAirport2 : LiveData<DataAirport> get() = _getAirport2
-    private val _getAirport2 = MutableLiveData<DataAirport>()
-    fun getAirportbyId2(
-        token: String,
-        id: Int
-    ){
-        viewModelScope.launch {
-            localRepository.getAirportbyId("Bearer $token",id)
-        }
-    }
 
     val getFlights : LiveData<Resource<ResponseFlight>> get() = _getFlights
     private val _getFlights = MutableLiveData<Resource<ResponseFlight>>()
@@ -80,6 +60,28 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
         _getFlights.postValue(Resource.Loading())
         viewModelScope.launch {
             val data = localRepository.getFlights()
+            viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
+        }
+    }
+    fun searchFligts(token: String,departureDate:String,from:Int,to:Int,flightClass:String){
+        _getFlights.postValue(Resource.Loading())
+        viewModelScope.launch {
+            val data = localRepository.searchFLight("Bearer $token",departureDate,from,to,flightClass)
+            viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
+        }
+    }
+
+    //admin
+    fun createFlight(token: String,requestBody: RequestBody){
+        viewModelScope.launch {
+            val data = localRepository.createFlights(token,requestBody)
+            viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
+        }
+    }
+    //admin
+    fun updateFlight(token: String,requestBody: RequestBody){
+        viewModelScope.launch {
+            val data =localRepository.updateFlight(token,requestBody)
             viewModelScope.launch(Dispatchers.Main) { _getFlights.postValue(data) }
         }
     }
@@ -100,6 +102,15 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
         _history.postValue(Resource.Loading())
         viewModelScope.launch {
             val data = localRepository.getHistory("Bearer $token")
+            viewModelScope.launch(Dispatchers.Main) { _history.postValue(data) }
+        }
+    }
+
+    //admin
+    fun getTickets(token: String){
+        _history.postValue(Resource.Loading())
+        viewModelScope.launch {
+            val data = localRepository.getTickets("Bearer $token")
             viewModelScope.launch(Dispatchers.Main) { _history.postValue(data) }
         }
     }
@@ -138,6 +149,19 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
         }
     }
 
+
+    val responsesAirplane : LiveData<Resource<ResponseAirplane>> get() = _responseAirplane
+    private val _responseAirplane = MutableLiveData<Resource<ResponseAirplane>>()
+    fun getAirplane(token: String){
+        _responseAirplane.postValue(Resource.Loading())
+        viewModelScope.launch {
+            val data = localRepository.getAirplane("Bearer $token")
+            viewModelScope.launch(Dispatchers.Main) { _responseAirplane.postValue(data) }
+        }
+    }
+
+
+
     //from data Store
     fun setAccessToken(token:String){
         viewModelScope.launch {
@@ -156,6 +180,40 @@ class MainViewModel @Inject constructor(private val localRepository: LocalReposi
     fun getImageString():LiveData<String>{
         return localRepository.getImageString().asLiveData()
     }
+    //dataState
+    var airport1 : Airport? =null
+    fun setairport1(airport: Airport){
+        airport1 =airport
+    }
+    var airport2 : Airport? =null
+    fun setairport2(airport: Airport){
+        airport2 =airport
+    }
+    var date1 : String? =null
+    fun setdate1(date :String){
+        date1 = date
+    }
+    var date2 : String? = null
+    fun setdate2(date:String){
+        date2 = date
+    }
+    var flightClass : Int? = null
+    fun seflightclass(string: Int){
+        flightClass = string
+    }
+    var price : String? = null
+    fun setprice(string: String){
+        price = string
+    }
+    var airplane : Airplane? = null
+    fun setairplane(string: Airplane){
+        airplane = string
+    }
+    var desc : String? = null
+    fun setdesc(string: String){
+        desc = string
+    }
+
 
 
 

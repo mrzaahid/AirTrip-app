@@ -1,17 +1,15 @@
 package com.binarfp.airtrip.presentation.ui.buyer
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binarfp.airtrip.R
 import com.binarfp.airtrip.databinding.FragmentHistoryBinding
-import com.binarfp.airtrip.databinding.ItemHistoryBinding
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.zaahid.challenge6.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +24,6 @@ class HistoryFragment : Fragment() {
             bundle.putSerializable("boardingpass",it.boardingPasses?.boardingPassPergi)
             bundle.putString("name",it.passenger?.name)
             bundle.putString("asal","history")
-            Toast.makeText(context , it.boardingPasses?.boardingPassPulang.toString(), Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_historyFragment_to_boardingFragment,bundle)
         },{
             val bundle = Bundle()

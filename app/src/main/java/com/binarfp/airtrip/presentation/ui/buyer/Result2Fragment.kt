@@ -17,8 +17,9 @@ import com.binarfp.airtrip.model.Flight
 import com.binarfp.airtrip.presentation.MainViewModel
 import com.binarfp.airtrip.presentation.ui.auth.MainActivity
 import com.zaahid.challenge6.wrapper.Resource
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Result2Fragment : Fragment() {
     private val mainViewModel : MainViewModel by viewModels()
     private lateinit var binding: FragmentResult2Binding
@@ -71,7 +72,6 @@ class Result2Fragment : Fragment() {
                     val result = it.payload?.data?.filter {data->
                         ((data.fromAirport?.id==airport2.id)&&(data.toAirport?.id==airport1.id))||
                                 date?.let {it-> data.departure?.lowercase()?.indexOf(it) }!! > -1
-                                kelas.let {it-> data.flightClass?.lowercase()?.indexOf(it.toString()) }!! > -1
                     }
                     if (result != null) {
                         adapter.submitData(result)

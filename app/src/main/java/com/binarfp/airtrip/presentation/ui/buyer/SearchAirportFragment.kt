@@ -33,6 +33,11 @@ class SearchAirportFragment : Fragment() {
                 bundle.putSerializable("airport1",it)
                 findNavController().navigate(R.id.action_searchAirportFragment_to_searchAirport2,bundle)
             }
+            if (requireArguments().getInt("id")==3){
+                arguments?.getInt("id")?.let { it1 -> bundle.putInt("id", it1) }
+                bundle.putSerializable("airport1",it)
+                findNavController().navigate(R.id.action_searchAirportFragment2_to_searchAirport22,bundle)
+            }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {

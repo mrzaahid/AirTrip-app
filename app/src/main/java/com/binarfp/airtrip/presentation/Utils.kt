@@ -24,7 +24,7 @@ object Utils {
         return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
     }
     fun duration(time1: String, time2: String): CharSequence {
-        val simpleDateFormat = SimpleDateFormat("HH:mm:ss")
+        val simpleDateFormat = SimpleDateFormat("HH:mm")
         val date1 = simpleDateFormat.parse(time1)
         val date2 = simpleDateFormat.parse(time2)
         // Calculating the difference in milliseconds
