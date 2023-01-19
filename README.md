@@ -9,7 +9,7 @@ mrzaahid alias Muhammad Zaahid,
 
 dan rizakyfad alias Rizaky
 
-Lengkapnya ada di branch dev
+Code Lengkapnya ada di branch dev
 
 # Link DeployMent
 kalo masih ada:
